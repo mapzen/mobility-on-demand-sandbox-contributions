@@ -1,0 +1,1 @@
+/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/MOD-sandbox/node_modules/ember-data/addon/serializer.js

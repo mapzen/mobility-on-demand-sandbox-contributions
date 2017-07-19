@@ -1,0 +1,1 @@
+/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/MOD-sandbox/tmp/funnel-input_base_path-qRCyd09w.tmp/adapters/json-api.js

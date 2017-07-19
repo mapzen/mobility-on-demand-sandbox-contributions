@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="add-operator-info">
+		<p>
+		Here's where you can add license information.
+		</p>
+	</div>
+	<div class="pull-left">
+		{{#bs-button type="primary" icon="glyphicon glyphicon-chevron-left" onClick=(action "changeRoute" 'submit.data')}}
+		  Back
+		{{/bs-button}}
+	</div>
+
+	<div class="pull-right">
+		{{#bs-button type="primary" icon="glyphicon glyphicon-chevron-right" onClick=(action "changeRoute" 'submit.column-mapping')}}
+		  Next
+		{{/bs-button}}
+	</div>
+</div>
