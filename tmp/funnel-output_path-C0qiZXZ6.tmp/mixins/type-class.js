@@ -1,0 +1,1 @@
+/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/node_modules/ember-bootstrap/addon/mixins/type-class.js

@@ -4,6 +4,11 @@
 		Here's where you can add data.
 		</p>
 	</div>
+	<div class="headroom footroom center-text">
+			{{#bs-button icon="glyphicon glyphicon-upload" onClick=(action "changeRoute")}}Upload file{{/bs-button}}
+			{{#bs-button icon="glyphicon glyphicon-link" onClick=(action "changeRoute")}}ArcGIS server link{{/bs-button}}
+			{{#bs-button icon="glyphicon glyphicon-link" onClick=(action "changeRoute")}}Link to zip file{{/bs-button}}
+		</div>
 	<div class="pull-left">
 		{{#bs-button type="primary" icon="glyphicon glyphicon-chevron-left" onClick=(action "changeRoute" 'submit.intro')}}
 		  Back
