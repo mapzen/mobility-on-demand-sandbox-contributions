@@ -1,17 +1,12 @@
-<div class="container">
-	<div class="add-operator-info">
-		<p>
+<div class="ui text container center aligned">
+	<h3 class="first headroom">Welcome!</h3>
+	<p>
 		Some introduction info can go here.
-		</p>
+	</p>
+	<div class="column">
+		<div class="ui two column stackable padded middle aligned centered color grid">
+			<div class="column left aligned"></div>
+			<div class="column right aligned"><button class="ui button olive" onClick={{action "changeRoute" 'submit.data'}}>Next</button></div>
+		</div>
 	</div>
-	<div>
-		<button class="ui button">{{text}}</button>
-	</div>
-</div>
-
-<div class="ui animated button" tabindex="0">
-  <div class="visible content">Next</div>
-  <div class="hidden content">
-    <i class="right arrow icon"></i>
-  </div>
 </div>

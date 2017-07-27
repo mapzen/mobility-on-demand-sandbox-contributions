@@ -1,5 +1,11 @@
-.jumbotron {
+@primaryColor: #B03060;
+
+.ui.inverted.segment {
 	background-color: darkgrey;
+}
+
+.masthead {
+	margin-top: 50px
 }
 
 .title {
@@ -16,4 +22,8 @@
 
 .footroom {
 	padding-bottom: 15px;
+}
+
+.primary{
+	background-color: red;
 }

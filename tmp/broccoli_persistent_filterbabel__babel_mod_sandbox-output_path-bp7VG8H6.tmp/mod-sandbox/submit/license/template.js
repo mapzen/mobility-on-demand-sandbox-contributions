@@ -1,81 +1,10 @@
 define("mod-sandbox/submit/license/template", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
-    var child0 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 8,
-              "column": 2
-            },
-            "end": {
-              "line": 10,
-              "column": 2
-            }
-          },
-          "moduleName": "mod-sandbox/submit/license/template.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("		  Back\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
-    var child1 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 14,
-              "column": 2
-            },
-            "end": {
-              "line": 16,
-              "column": 2
-            }
-          },
-          "moduleName": "mod-sandbox/submit/license/template.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("		  Next\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
     return {
       meta: {
         "fragmentReason": {
-          "name": "triple-curlies"
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
         },
         "revision": "Ember@2.5.1",
         "loc": {
@@ -86,7 +15,7 @@ define("mod-sandbox/submit/license/template", ["exports"], function (exports) {
           },
           "end": {
             "line": 18,
-            "column": 6
+            "column": 10
           }
         },
         "moduleName": "mod-sandbox/submit/license/template.hbs"
@@ -97,58 +26,16 @@ define("mod-sandbox/submit/license/template", ["exports"], function (exports) {
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "container");
-        var el2 = dom.createTextNode("\n	");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "add-operator-info");
-        var el3 = dom.createTextNode("\n		");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("p");
-        var el4 = dom.createTextNode("\n		Here's where you can add license information.\n		");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n	");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n	");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "pull-left");
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("	");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n\n	");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "pull-right");
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("	");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
+        var el1 = dom.createComment(" <div class=\"container\">\n	<div class=\"add-operator-info\">\n		<p>\n		Here's where you can add license information.\n		</p>\n	</div>\n	<div class=\"pull-left\">\n{{#bs-button type=\"primary\" icon=\"glyphicon glyphicon-chevron-left\" onClick=(action \"changeRoute\" 'submit.data')}}\n		  Back\n		{{/bs-button}}	</div>\n\n	<div class=\"pull-right\">\n{{#bs-button type=\"primary\" icon=\"glyphicon glyphicon-chevron-right\" onClick=(action \"changeRoute\" 'submit.column-mapping')}}\n		  Next\n		{{/bs-button}}	</div>\n</div> ");
         dom.appendChild(el0, el1);
         return el0;
       },
-      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [0]);
-        var morphs = new Array(2);
-        morphs[0] = dom.createMorphAt(dom.childAt(element0, [3]), 1, 1);
-        morphs[1] = dom.createMorphAt(dom.childAt(element0, [5]), 1, 1);
-        return morphs;
+      buildRenderNodes: function buildRenderNodes() {
+        return [];
       },
-      statements: [["block", "bs-button", [], ["type", "primary", "icon", "glyphicon glyphicon-chevron-left", "onClick", ["subexpr", "action", ["changeRoute", "submit.data"], [], ["loc", [null, [8, 78], [8, 114]]]]], 0, null, ["loc", [null, [8, 2], [10, 16]]]], ["block", "bs-button", [], ["type", "primary", "icon", "glyphicon glyphicon-chevron-right", "onClick", ["subexpr", "action", ["changeRoute", "submit.column-mapping"], [], ["loc", [null, [14, 79], [14, 125]]]]], 1, null, ["loc", [null, [14, 2], [16, 16]]]]],
+      statements: [],
       locals: [],
-      templates: [child0, child1]
+      templates: []
     };
   })());
 });
