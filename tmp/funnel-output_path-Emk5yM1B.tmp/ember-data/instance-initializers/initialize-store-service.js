@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/tmp/funnel-input_base_path-kgHnmLb4.tmp/instance-initializers/initialize-store-service.js

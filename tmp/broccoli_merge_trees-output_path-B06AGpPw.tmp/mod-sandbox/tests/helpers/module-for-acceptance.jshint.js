@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/tmp/broccoli_merge_trees-input_base_path-6pvGdOtx.tmp/2/mod-sandbox/tests/helpers/module-for-acceptance.jshint.js

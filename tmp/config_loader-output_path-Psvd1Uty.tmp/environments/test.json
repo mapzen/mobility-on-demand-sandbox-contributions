@@ -1,0 +1,1 @@
+{"modulePrefix":"mod-sandbox","environment":"test","baseURL":"/","locationType":"none","EmberENV":{"FEATURES":{}},"APP":{"LOG_ACTIVE_GENERATION":false,"LOG_VIEW_LOOKUPS":false,"rootElement":"#ember-testing","name":"mod-sandbox","version":"0.0.0+69aede1f"},"exportApplicationGlobal":true}
