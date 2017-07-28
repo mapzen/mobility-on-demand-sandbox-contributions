@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/app/resolver.js

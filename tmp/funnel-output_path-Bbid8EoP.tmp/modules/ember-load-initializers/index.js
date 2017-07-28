@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/MOD-sandbox/tmp/funnel-input_base_path-Yr7a7yR4.tmp/index.js

@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/bower_components/ember-cli-test-loader/test-loader.js

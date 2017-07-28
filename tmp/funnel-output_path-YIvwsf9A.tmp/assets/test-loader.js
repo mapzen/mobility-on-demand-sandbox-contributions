@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/tmp/funnel-input_base_path-xfdUDcLe.tmp/bower_components/ember-cli-test-loader/test-loader.js
