@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/MOD-sandbox/node_modules/ember-bootstrap/node_modules/ember-wormhole/app/components/ember-wormhole.js

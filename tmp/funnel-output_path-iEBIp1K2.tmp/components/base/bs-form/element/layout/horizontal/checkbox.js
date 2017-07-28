@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/MOD-sandbox/node_modules/ember-bootstrap/addon/components/base/bs-form/element/layout/horizontal/checkbox.js

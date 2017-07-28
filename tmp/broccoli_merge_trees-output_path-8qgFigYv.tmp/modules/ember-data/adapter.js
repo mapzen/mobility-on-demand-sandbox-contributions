@@ -1,1 +1,0 @@
-/Users/meghanhade/Development/Mapzen/mobility-on-demand-sandbox-contributions/MOD-sandbox/tmp/broccoli_merge_trees-input_base_path-kWstW8bO.tmp/0/modules/ember-data/adapter.js
