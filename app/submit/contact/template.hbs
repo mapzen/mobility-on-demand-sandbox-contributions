@@ -1,16 +1,7 @@
-<div>
-	{{#bs-form formLayout="horizontal" model=this onSubmit=(action "submit") as |form|}}
-	  {{form.element controlType="email" label="Email" placeholder="Email" property="email"}}
-	{{/bs-form}}
-	{{form.email}}
-	<div class="pull-left">
-		{{#bs-button type="primary" icon="glyphicon glyphicon-chevron-left" onClick=(action "changeRoute" 'submit.column-mapping')}}
-		  Back
-		{{/bs-button}}
-	</div>
-	<div class="pull-right">
-		{{#bs-button type="primary" icon="glyphicon glyphicon-chevron-right" onClick=(action "changeRoute" 'submit.review')}}
-		  Next
-		{{/bs-button}}
-	</div>
+<div class="ui text container">
+	<h3 class="first headroom">Contact information</h3>
+	<p>
+		Here's where you can provide contact information.
+	</p>
+	{{nav-buttons sendChangeRoute="changeRoute" back="submit.column-mapping" next="submit.review"}}
 </div>

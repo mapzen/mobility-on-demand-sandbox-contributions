@@ -27,10 +27,5 @@
 	<p>
 		Here's where you can add data.
 	</p>
-	<div class="column">
-		<div class="ui two column stackable padded middle aligned centered color grid">
-			<div class="column left aligned"><button class="ui button yellow" onClick={{action "changeRoute" 'submit.intro'}}>Back</button></div>
-			<div class="column right aligned"><button class="ui button olive" onClick={{action "changeRoute" 'submit.license'}}>Next</button></div>
-		</div>
-	</div>
+	{{nav-buttons sendChangeRoute="changeRoute" back="submit.intro" next="submit.license"}}
 </div>

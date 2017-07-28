@@ -14,7 +14,7 @@ define("mod-sandbox/submit/data/template", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 36,
+            "line": 31,
             "column": 6
           }
         },
@@ -47,37 +47,7 @@ define("mod-sandbox/submit/data/template", ["exports"], function (exports) {
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "column");
-        var el3 = dom.createTextNode("\n		");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("div");
-        dom.setAttribute(el3, "class", "ui two column stackable padded middle aligned centered color grid");
-        var el4 = dom.createTextNode("\n			");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "class", "column left aligned");
-        var el5 = dom.createElement("button");
-        dom.setAttribute(el5, "class", "ui button yellow");
-        var el6 = dom.createTextNode("Back");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n			");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "class", "column right aligned");
-        var el5 = dom.createElement("button");
-        dom.setAttribute(el5, "class", "ui button olive");
-        var el6 = dom.createTextNode("Next");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n		");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n	");
-        dom.appendChild(el2, el3);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
@@ -85,15 +55,11 @@ define("mod-sandbox/submit/data/template", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [2, 5, 1]);
-        var element1 = dom.childAt(element0, [1, 0]);
-        var element2 = dom.childAt(element0, [3, 0]);
-        var morphs = new Array(2);
-        morphs[0] = dom.createAttrMorph(element1, 'onClick');
-        morphs[1] = dom.createAttrMorph(element2, 'onClick');
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [2]), 5, 5);
         return morphs;
       },
-      statements: [["attribute", "onClick", ["subexpr", "action", ["changeRoute", "submit.intro"], [], ["loc", [null, [32, 77], [32, 116]]]]], ["attribute", "onClick", ["subexpr", "action", ["changeRoute", "submit.license"], [], ["loc", [null, [33, 77], [33, 118]]]]]],
+      statements: [["inline", "nav-buttons", [], ["sendChangeRoute", "changeRoute", "back", "submit.intro", "next", "submit.license"], ["loc", [null, [30, 1], [30, 88]]]]],
       locals: [],
       templates: []
     };

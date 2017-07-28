@@ -32,6 +32,17 @@ define('mod-sandbox/components/app-version', ['exports', 'ember-cli-app-version/
     name: name
   });
 });
+define('mod-sandbox/components/nav-buttons', ['exports', 'ember'], function (exports, _ember) {
+	exports['default'] = _ember['default'].Component.extend({
+		next: null,
+		back: null,
+		actions: {
+			sendChangeRoute: function sendChangeRoute(route) {
+				this.sendAction('sendChangeRoute', route);
+			}
+		}
+	});
+});
 define('mod-sandbox/components/ui-accordion', ['exports', 'semantic-ui-ember/components/ui-accordion'], function (exports, _semanticUiEmberComponentsUiAccordion) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
@@ -402,78 +413,6 @@ define('mod-sandbox/submit/column-mapping/route', ['exports', 'ember'], function
 });
 define("mod-sandbox/submit/column-mapping/template", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
-    var child0 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 8,
-              "column": 2
-            },
-            "end": {
-              "line": 10,
-              "column": 2
-            }
-          },
-          "moduleName": "mod-sandbox/submit/column-mapping/template.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("		  Back\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
-    var child1 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 14,
-              "column": 2
-            },
-            "end": {
-              "line": 16,
-              "column": 2
-            }
-          },
-          "moduleName": "mod-sandbox/submit/column-mapping/template.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("		  Next\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
     return {
       meta: {
         "fragmentReason": {
@@ -487,7 +426,7 @@ define("mod-sandbox/submit/column-mapping/template", ["exports"], function (expo
             "column": 0
           },
           "end": {
-            "line": 18,
+            "line": 7,
             "column": 6
           }
         },
@@ -500,41 +439,23 @@ define("mod-sandbox/submit/column-mapping/template", ["exports"], function (expo
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "container");
+        dom.setAttribute(el1, "class", "ui text container");
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "add-operator-info");
-        var el3 = dom.createTextNode("\n		");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("p");
-        var el4 = dom.createTextNode("\n		Here's where you can verify data column mapping.\n		");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n	");
+        var el2 = dom.createElement("h3");
+        dom.setAttribute(el2, "class", "first headroom");
+        var el3 = dom.createTextNode("Column mapping");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "pull-left");
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("	");
+        var el2 = dom.createElement("p");
+        var el3 = dom.createTextNode("\n		Here's where you can verify data column mapping.\n	");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n\n	");
+        var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "pull-right");
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("	");
-        dom.appendChild(el2, el3);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
@@ -542,15 +463,13 @@ define("mod-sandbox/submit/column-mapping/template", ["exports"], function (expo
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [0]);
-        var morphs = new Array(2);
-        morphs[0] = dom.createMorphAt(dom.childAt(element0, [3]), 1, 1);
-        morphs[1] = dom.createMorphAt(dom.childAt(element0, [5]), 1, 1);
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 5, 5);
         return morphs;
       },
-      statements: [["block", "bs-button", [], ["type", "primary", "icon", "glyphicon glyphicon-chevron-left", "onClick", ["subexpr", "action", ["changeRoute", "submit.license"], [], ["loc", [null, [8, 78], [8, 117]]]]], 0, null, ["loc", [null, [8, 2], [10, 16]]]], ["block", "bs-button", [], ["type", "primary", "icon", "glyphicon glyphicon-chevron-right", "onClick", ["subexpr", "action", ["changeRoute", "submit.contact"], [], ["loc", [null, [14, 79], [14, 118]]]]], 1, null, ["loc", [null, [14, 2], [16, 16]]]]],
+      statements: [["inline", "nav-buttons", [], ["sendChangeRoute", "changeRoute", "back", "submit.license", "next", "submit.contact"], ["loc", [null, [6, 1], [6, 90]]]]],
       locals: [],
-      templates: [child0, child1]
+      templates: []
     };
   })());
 });
@@ -569,123 +488,11 @@ define('mod-sandbox/submit/contact/route', ['exports', 'ember'], function (expor
 });
 define("mod-sandbox/submit/contact/template", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
-    var child0 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 2,
-              "column": 1
-            },
-            "end": {
-              "line": 4,
-              "column": 1
-            }
-          },
-          "moduleName": "mod-sandbox/submit/contact/template.hbs"
-        },
-        isEmpty: false,
-        arity: 1,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("	  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
-          return morphs;
-        },
-        statements: [["inline", "form.element", [], ["controlType", "email", "label", "Email", "placeholder", "Email", "property", "email"], ["loc", [null, [3, 3], [3, 90]]]]],
-        locals: ["form"],
-        templates: []
-      };
-    })();
-    var child1 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 7,
-              "column": 2
-            },
-            "end": {
-              "line": 9,
-              "column": 2
-            }
-          },
-          "moduleName": "mod-sandbox/submit/contact/template.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("		  Back\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
-    var child2 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 12,
-              "column": 2
-            },
-            "end": {
-              "line": 14,
-              "column": 2
-            }
-          },
-          "moduleName": "mod-sandbox/submit/contact/template.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("		  Next\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
     return {
       meta: {
-        "fragmentReason": false,
+        "fragmentReason": {
+          "name": "triple-curlies"
+        },
         "revision": "Ember@2.5.1",
         "loc": {
           "source": null,
@@ -694,7 +501,7 @@ define("mod-sandbox/submit/contact/template", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 16,
+            "line": 7,
             "column": 6
           }
         },
@@ -707,35 +514,23 @@ define("mod-sandbox/submit/contact/template", ["exports"], function (exports) {
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("div");
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("	");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
+        dom.setAttribute(el1, "class", "ui text container");
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "pull-left");
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("	");
+        var el2 = dom.createElement("h3");
+        dom.setAttribute(el2, "class", "first headroom");
+        var el3 = dom.createTextNode("Contact information");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "pull-right");
-        var el3 = dom.createTextNode("\n");
+        var el2 = dom.createElement("p");
+        var el3 = dom.createTextNode("\n		Here's where you can provide contact information.\n	");
         dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("	");
-        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
@@ -743,17 +538,13 @@ define("mod-sandbox/submit/contact/template", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [0]);
-        var morphs = new Array(4);
-        morphs[0] = dom.createMorphAt(element0, 1, 1);
-        morphs[1] = dom.createMorphAt(element0, 3, 3);
-        morphs[2] = dom.createMorphAt(dom.childAt(element0, [5]), 1, 1);
-        morphs[3] = dom.createMorphAt(dom.childAt(element0, [7]), 1, 1);
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 5, 5);
         return morphs;
       },
-      statements: [["block", "bs-form", [], ["formLayout", "horizontal", "model", ["subexpr", "@mut", [["get", "this", ["loc", [null, [2, 42], [2, 46]]]]], [], []], "onSubmit", ["subexpr", "action", ["submit"], [], ["loc", [null, [2, 56], [2, 73]]]]], 0, null, ["loc", [null, [2, 1], [4, 13]]]], ["content", "form.email", ["loc", [null, [5, 1], [5, 15]]]], ["block", "bs-button", [], ["type", "primary", "icon", "glyphicon glyphicon-chevron-left", "onClick", ["subexpr", "action", ["changeRoute", "submit.column-mapping"], [], ["loc", [null, [7, 78], [7, 124]]]]], 1, null, ["loc", [null, [7, 2], [9, 16]]]], ["block", "bs-button", [], ["type", "primary", "icon", "glyphicon glyphicon-chevron-right", "onClick", ["subexpr", "action", ["changeRoute", "submit.review"], [], ["loc", [null, [12, 79], [12, 117]]]]], 2, null, ["loc", [null, [12, 2], [14, 16]]]]],
+      statements: [["inline", "nav-buttons", [], ["sendChangeRoute", "changeRoute", "back", "submit.column-mapping", "next", "submit.review"], ["loc", [null, [6, 1], [6, 96]]]]],
       locals: [],
-      templates: [child0, child1, child2]
+      templates: []
     };
   })());
 });
@@ -782,7 +573,7 @@ define("mod-sandbox/submit/data/template", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 36,
+            "line": 31,
             "column": 6
           }
         },
@@ -815,37 +606,7 @@ define("mod-sandbox/submit/data/template", ["exports"], function (exports) {
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "column");
-        var el3 = dom.createTextNode("\n		");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("div");
-        dom.setAttribute(el3, "class", "ui two column stackable padded middle aligned centered color grid");
-        var el4 = dom.createTextNode("\n			");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "class", "column left aligned");
-        var el5 = dom.createElement("button");
-        dom.setAttribute(el5, "class", "ui button yellow");
-        var el6 = dom.createTextNode("Back");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n			");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "class", "column right aligned");
-        var el5 = dom.createElement("button");
-        dom.setAttribute(el5, "class", "ui button olive");
-        var el6 = dom.createTextNode("Next");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n		");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n	");
-        dom.appendChild(el2, el3);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
@@ -853,15 +614,11 @@ define("mod-sandbox/submit/data/template", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [2, 5, 1]);
-        var element1 = dom.childAt(element0, [1, 0]);
-        var element2 = dom.childAt(element0, [3, 0]);
-        var morphs = new Array(2);
-        morphs[0] = dom.createAttrMorph(element1, 'onClick');
-        morphs[1] = dom.createAttrMorph(element2, 'onClick');
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [2]), 5, 5);
         return morphs;
       },
-      statements: [["attribute", "onClick", ["subexpr", "action", ["changeRoute", "submit.intro"], [], ["loc", [null, [32, 77], [32, 116]]]]], ["attribute", "onClick", ["subexpr", "action", ["changeRoute", "submit.license"], [], ["loc", [null, [33, 77], [33, 118]]]]]],
+      statements: [["inline", "nav-buttons", [], ["sendChangeRoute", "changeRoute", "back", "submit.intro", "next", "submit.license"], ["loc", [null, [30, 1], [30, 88]]]]],
       locals: [],
       templates: []
     };
@@ -888,7 +645,7 @@ define("mod-sandbox/submit/intro/template", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 12,
+            "line": 7,
             "column": 6
           }
         },
@@ -917,32 +674,7 @@ define("mod-sandbox/submit/intro/template", ["exports"], function (exports) {
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "column");
-        var el3 = dom.createTextNode("\n		");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("div");
-        dom.setAttribute(el3, "class", "ui two column stackable padded middle aligned centered color grid");
-        var el4 = dom.createTextNode("\n			");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "class", "column left aligned");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n			");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4, "class", "column right aligned");
-        var el5 = dom.createElement("button");
-        dom.setAttribute(el5, "class", "ui button olive");
-        var el6 = dom.createTextNode("Next");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n		");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n	");
-        dom.appendChild(el2, el3);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
@@ -950,12 +682,11 @@ define("mod-sandbox/submit/intro/template", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [0, 5, 1, 3, 0]);
         var morphs = new Array(1);
-        morphs[0] = dom.createAttrMorph(element0, 'onClick');
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 5, 5);
         return morphs;
       },
-      statements: [["attribute", "onClick", ["subexpr", "action", ["changeRoute", "submit.data"], [], ["loc", [null, [9, 77], [9, 115]]]]]],
+      statements: [["inline", "nav-buttons", [], ["sendChangeRoute", "changeRoute", "next", "submit.data"], ["loc", [null, [6, 1], [6, 65]]]]],
       locals: [],
       templates: []
     };
@@ -972,8 +703,7 @@ define("mod-sandbox/submit/license/template", ["exports"], function (exports) {
     return {
       meta: {
         "fragmentReason": {
-          "name": "missing-wrapper",
-          "problems": ["wrong-type"]
+          "name": "triple-curlies"
         },
         "revision": "Ember@2.5.1",
         "loc": {
@@ -983,8 +713,8 @@ define("mod-sandbox/submit/license/template", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 18,
-            "column": 10
+            "line": 7,
+            "column": 6
           }
         },
         "moduleName": "mod-sandbox/submit/license/template.hbs"
@@ -995,14 +725,36 @@ define("mod-sandbox/submit/license/template", ["exports"], function (exports) {
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createComment(" <div class=\"container\">\n	<div class=\"add-operator-info\">\n		<p>\n		Here's where you can add license information.\n		</p>\n	</div>\n	<div class=\"pull-left\">\n{{#bs-button type=\"primary\" icon=\"glyphicon glyphicon-chevron-left\" onClick=(action \"changeRoute\" 'submit.data')}}\n		  Back\n		{{/bs-button}}	</div>\n\n	<div class=\"pull-right\">\n{{#bs-button type=\"primary\" icon=\"glyphicon glyphicon-chevron-right\" onClick=(action \"changeRoute\" 'submit.column-mapping')}}\n		  Next\n		{{/bs-button}}	</div>\n</div> ");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "ui text container");
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("h3");
+        dom.setAttribute(el2, "class", "first headroom");
+        var el3 = dom.createTextNode("Add license");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("p");
+        var el3 = dom.createTextNode("\n		Here's where you can add license information.\n	");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         return el0;
       },
-      buildRenderNodes: function buildRenderNodes() {
-        return [];
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 5, 5);
+        return morphs;
       },
-      statements: [],
+      statements: [["inline", "nav-buttons", [], ["sendChangeRoute", "changeRoute", "back", "submit.data", "next", "submit.column-mapping"], ["loc", [null, [6, 1], [6, 94]]]]],
       locals: [],
       templates: []
     };
@@ -1023,78 +775,6 @@ define('mod-sandbox/submit/review/route', ['exports', 'ember'], function (export
 });
 define("mod-sandbox/submit/review/template", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
-    var child0 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 9,
-              "column": 2
-            },
-            "end": {
-              "line": 11,
-              "column": 2
-            }
-          },
-          "moduleName": "mod-sandbox/submit/review/template.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("		  Back\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
-    var child1 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.5.1",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 14,
-              "column": 2
-            },
-            "end": {
-              "line": 16,
-              "column": 2
-            }
-          },
-          "moduleName": "mod-sandbox/submit/review/template.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("		  Submit\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
     return {
       meta: {
         "fragmentReason": {
@@ -1108,7 +788,7 @@ define("mod-sandbox/submit/review/template", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 18,
+            "line": 7,
             "column": 6
           }
         },
@@ -1121,45 +801,23 @@ define("mod-sandbox/submit/review/template", ["exports"], function (exports) {
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "container");
+        dom.setAttribute(el1, "class", "ui text container");
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "add-operator-info");
-        var el3 = dom.createTextNode("\n		");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("p");
-        var el4 = dom.createTextNode("\n		Review before submitting\n		");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createComment(" display data to be submitted here ");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n		");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n	");
+        var el2 = dom.createElement("h3");
+        dom.setAttribute(el2, "class", "first headroom");
+        var el3 = dom.createTextNode("Review");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "pull-left");
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("	");
+        var el2 = dom.createElement("p");
+        var el3 = dom.createTextNode("\n		Here's where you can review before submitting\n	");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n	");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2, "class", "pull-right");
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("	");
-        dom.appendChild(el2, el3);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
@@ -1167,15 +825,13 @@ define("mod-sandbox/submit/review/template", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [0]);
-        var morphs = new Array(2);
-        morphs[0] = dom.createMorphAt(dom.childAt(element0, [3]), 1, 1);
-        morphs[1] = dom.createMorphAt(dom.childAt(element0, [5]), 1, 1);
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 5, 5);
         return morphs;
       },
-      statements: [["block", "bs-button", [], ["type", "primary", "icon", "glyphicon glyphicon-chevron-left", "onClick", ["subexpr", "action", ["changeRoute", "submit.contact"], [], ["loc", [null, [9, 78], [9, 117]]]]], 0, null, ["loc", [null, [9, 2], [11, 16]]]], ["block", "bs-button", [], ["type", "primary", "icon", "glyphicon glyphicon-check", "onClick", ["subexpr", "action", ["submit"], [], ["loc", [null, [14, 71], [14, 88]]]]], 1, null, ["loc", [null, [14, 2], [16, 16]]]]],
+      statements: [["inline", "nav-buttons", [], ["sendChangeRoute", "changeRoute", "back", "submit.contact", "next", "submit.success"], ["loc", [null, [6, 1], [6, 90]]]]],
       locals: [],
-      templates: [child0, child1]
+      templates: []
     };
   })());
 });
@@ -1396,6 +1052,165 @@ define("mod-sandbox/templates/application", ["exports"], function (exports) {
       statements: [["content", "outlet", ["loc", [null, [8, 0], [8, 10]]]]],
       locals: [],
       templates: []
+    };
+  })());
+});
+define("mod-sandbox/templates/components/nav-buttons", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.5.1",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 3,
+              "column": 2
+            },
+            "end": {
+              "line": 5,
+              "column": 2
+            }
+          },
+          "moduleName": "mod-sandbox/templates/components/nav-buttons.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("			");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "column left aligned");
+          var el2 = dom.createElement("button");
+          dom.setAttribute(el2, "class", "ui button yellow");
+          var el3 = dom.createTextNode("Back");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [1, 0]);
+          var morphs = new Array(1);
+          morphs[0] = dom.createAttrMorph(element0, 'onClick');
+          return morphs;
+        },
+        statements: [["attribute", "onClick", ["subexpr", "action", ["sendChangeRoute", ["get", "back", ["loc", [null, [4, 104], [4, 108]]]]], [], ["loc", [null, [4, 77], [4, 110]]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child1 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.5.1",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 7,
+              "column": 2
+            }
+          },
+          "moduleName": "mod-sandbox/templates/components/nav-buttons.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("			");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "column left aligned");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes() {
+          return [];
+        },
+        statements: [],
+        locals: [],
+        templates: []
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "triple-curlies"
+        },
+        "revision": "Ember@2.5.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 10,
+            "column": 6
+          }
+        },
+        "moduleName": "mod-sandbox/templates/components/nav-buttons.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "column");
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "ui two column stackable padded middle aligned centered color grid");
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("		");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3, "class", "column right aligned");
+        var el4 = dom.createElement("button");
+        dom.setAttribute(el4, "class", "ui button olive");
+        var el5 = dom.createTextNode("Next");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n	");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element1 = dom.childAt(fragment, [0, 1]);
+        var element2 = dom.childAt(element1, [3, 0]);
+        var morphs = new Array(2);
+        morphs[0] = dom.createMorphAt(element1, 1, 1);
+        morphs[1] = dom.createAttrMorph(element2, 'onClick');
+        return morphs;
+      },
+      statements: [["block", "if", [["get", "back", ["loc", [null, [3, 8], [3, 12]]]]], [], 0, 1, ["loc", [null, [3, 2], [7, 9]]]], ["attribute", "onClick", ["subexpr", "action", ["sendChangeRoute", ["get", "next", ["loc", [null, [8, 103], [8, 107]]]]], [], ["loc", [null, [8, 76], [8, 109]]]]]],
+      locals: [],
+      templates: [child0, child1]
     };
   })());
 });

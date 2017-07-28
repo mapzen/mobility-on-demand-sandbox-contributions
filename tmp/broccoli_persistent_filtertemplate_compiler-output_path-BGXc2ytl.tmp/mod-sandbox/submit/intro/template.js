@@ -12,7 +12,7 @@ export default Ember.HTMLBars.template((function() {
           "column": 0
         },
         "end": {
-          "line": 12,
+          "line": 7,
           "column": 6
         }
       },
@@ -41,32 +41,7 @@ export default Ember.HTMLBars.template((function() {
       dom.appendChild(el1, el2);
       var el2 = dom.createTextNode("\n	");
       dom.appendChild(el1, el2);
-      var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","column");
-      var el3 = dom.createTextNode("\n		");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createElement("div");
-      dom.setAttribute(el3,"class","ui two column stackable padded middle aligned centered color grid");
-      var el4 = dom.createTextNode("\n			");
-      dom.appendChild(el3, el4);
-      var el4 = dom.createElement("div");
-      dom.setAttribute(el4,"class","column left aligned");
-      dom.appendChild(el3, el4);
-      var el4 = dom.createTextNode("\n			");
-      dom.appendChild(el3, el4);
-      var el4 = dom.createElement("div");
-      dom.setAttribute(el4,"class","column right aligned");
-      var el5 = dom.createElement("button");
-      dom.setAttribute(el5,"class","ui button olive");
-      var el6 = dom.createTextNode("Next");
-      dom.appendChild(el5, el6);
-      dom.appendChild(el4, el5);
-      dom.appendChild(el3, el4);
-      var el4 = dom.createTextNode("\n		");
-      dom.appendChild(el3, el4);
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
+      var el2 = dom.createComment("");
       dom.appendChild(el1, el2);
       var el2 = dom.createTextNode("\n");
       dom.appendChild(el1, el2);
@@ -74,13 +49,12 @@ export default Ember.HTMLBars.template((function() {
       return el0;
     },
     buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-      var element0 = dom.childAt(fragment, [0, 5, 1, 3, 0]);
       var morphs = new Array(1);
-      morphs[0] = dom.createAttrMorph(element0, 'onClick');
+      morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]),5,5);
       return morphs;
     },
     statements: [
-      ["attribute","onClick",["subexpr","action",["changeRoute","submit.data"],[],["loc",[null,[9,77],[9,115]]]]]
+      ["inline","nav-buttons",[],["sendChangeRoute","changeRoute","next","submit.data"],["loc",[null,[6,1],[6,65]]]]
     ],
     locals: [],
     templates: []

@@ -2,10 +2,7 @@ export default Ember.HTMLBars.template((function() {
   return {
     meta: {
       "fragmentReason": {
-        "name": "missing-wrapper",
-        "problems": [
-          "wrong-type"
-        ]
+        "name": "triple-curlies"
       },
       "revision": "Ember@2.5.1",
       "loc": {
@@ -15,8 +12,8 @@ export default Ember.HTMLBars.template((function() {
           "column": 0
         },
         "end": {
-          "line": 18,
-          "column": 10
+          "line": 7,
+          "column": 6
         }
       },
       "moduleName": "mod-sandbox/submit/license/template.hbs"
@@ -27,13 +24,37 @@ export default Ember.HTMLBars.template((function() {
     hasRendered: false,
     buildFragment: function buildFragment(dom) {
       var el0 = dom.createDocumentFragment();
-      var el1 = dom.createComment(" <div class=\"container\">\n	<div class=\"add-operator-info\">\n		<p>\n		Here's where you can add license information.\n		</p>\n	</div>\n	<div class=\"pull-left\">\n{{#bs-button type=\"primary\" icon=\"glyphicon glyphicon-chevron-left\" onClick=(action \"changeRoute\" 'submit.data')}}\n		  Back\n		{{/bs-button}}	</div>\n\n	<div class=\"pull-right\">\n{{#bs-button type=\"primary\" icon=\"glyphicon glyphicon-chevron-right\" onClick=(action \"changeRoute\" 'submit.column-mapping')}}\n		  Next\n		{{/bs-button}}	</div>\n</div> ");
+      var el1 = dom.createElement("div");
+      dom.setAttribute(el1,"class","ui text container");
+      var el2 = dom.createTextNode("\n	");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("h3");
+      dom.setAttribute(el2,"class","first headroom");
+      var el3 = dom.createTextNode("Add license");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n	");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("p");
+      var el3 = dom.createTextNode("\n		Here's where you can add license information.\n	");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n	");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createComment("");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n");
+      dom.appendChild(el1, el2);
       dom.appendChild(el0, el1);
       return el0;
     },
-    buildRenderNodes: function buildRenderNodes() { return []; },
+    buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+      var morphs = new Array(1);
+      morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]),5,5);
+      return morphs;
+    },
     statements: [
-
+      ["inline","nav-buttons",[],["sendChangeRoute","changeRoute","back","submit.data","next","submit.column-mapping"],["loc",[null,[6,1],[6,94]]]]
     ],
     locals: [],
     templates: []

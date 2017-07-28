@@ -3,10 +3,5 @@
 	<p>
 		Some introduction info can go here.
 	</p>
-	<div class="column">
-		<div class="ui two column stackable padded middle aligned centered color grid">
-			<div class="column left aligned"></div>
-			<div class="column right aligned"><button class="ui button olive" onClick={{action "changeRoute" 'submit.data'}}>Next</button></div>
-		</div>
-	</div>
+	{{nav-buttons sendChangeRoute="changeRoute" next="submit.data"}}
 </div>
