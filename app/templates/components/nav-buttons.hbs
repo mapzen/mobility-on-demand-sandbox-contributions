@@ -1,0 +1,10 @@
+<div class="column">
+	<div class="ui two column stackable padded middle aligned centered color grid">
+		{{#if back}}
+			<div class="column left aligned"><button class="ui button yellow" onClick={{action "sendChangeRoute" back}}>Back</button></div>
+		{{else}}
+			<div class="column left aligned"></div>
+		{{/if}}
+		<div class="column right aligned"><button class="ui button olive" onClick={{action "sendChangeRoute" next}}>Next</button></div>
+	</div>
+</div>

@@ -1,18 +1,7 @@
-<div class="container">
-	<div class="add-operator-info">
-		<p>
-		Review before submitting
-		<!-- display data to be submitted here -->
-		</p>
-	</div>
-	<div class="pull-left">
-		{{#bs-button type="primary" icon="glyphicon glyphicon-chevron-left" onClick=(action "changeRoute" 'submit.contact')}}
-		  Back
-		{{/bs-button}}
-	</div>
-	<div class="pull-right">
-		{{#bs-button type="primary" icon="glyphicon glyphicon-check" onClick=(action "submit")}}
-		  Submit
-		{{/bs-button}}
-	</div>
+<div class="ui text container">
+	<h3 class="first headroom">Review</h3>
+	<p>
+		Here's where you can review before submitting
+	</p>
+	{{nav-buttons sendChangeRoute="changeRoute" back="submit.contact" next="submit.success"}}
 </div>
