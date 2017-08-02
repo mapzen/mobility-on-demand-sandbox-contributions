@@ -11,14 +11,12 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{nav-buttons}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim(), 'Next');
 
   // Template block usage:
   this.render(hbs`
-    {{#nav-buttons}}
-      template block text
+    {{#nav-buttons back="foo" next="bar"}}
     {{/nav-buttons}}
   `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$("#back").text().trim(), 'Back');
 });

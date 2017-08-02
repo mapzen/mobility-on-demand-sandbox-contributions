@@ -6,7 +6,7 @@ export default Ember.Controller.extend(sharedActions, {
 	email: null,
 	actions: {
 		submit: function(){
-			console.log("submit")
+			console.log("submit");
 		}
 	}
 });
