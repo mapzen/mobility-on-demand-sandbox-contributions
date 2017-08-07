@@ -1,23 +1,21 @@
 machine:
   node:
-  # change to 6.0.0?
-    version: 4.5.0
+    version: 6.11.0
 
 dependencies:
   pre:
     - npm install -g bower
+    - npm install -g phantomjs-prebuilt
+    - npm install -g ember-cli
   cache_directories:
     - node_modules
     - bower_components
-  # change to 6.0.0?
-    - ~/nvm/v4.5.0/lib/node_modules/ember-cli
-  # change to 6.0.0?
-    - ~/nvm/v4.5.0/bin/ember
+    - ~/nvm/v6.11.0/lib/node_modules/ember-cli
+    - ~/nvm/v6.11.0/bin/ember
   override:
     - npm prune && npm install
     - bower prune && bower install
-  # change to 6.0.0?
-    - if [ ! -e ~/nvm/v4.5.0/bin/ember ]; then npm install -g ember-cli; else echo "ember-cli seems to be cached"; fi;
+    # - if [ ! -e ~/nvm/v4.5.0/bin/ember ]; then npm install -g ember-cli; else echo "ember-cli seems to be cached"; fi;
 
 
 # this might need to be set as well?
