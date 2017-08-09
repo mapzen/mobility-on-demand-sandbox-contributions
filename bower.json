@@ -1,0 +1,7 @@
+{
+  "name": "mobility-on-demand-sandbox-contributions",
+  "dependencies": {
+    "ember-qunit-notifications": "0.1.0",
+    "semantic-ui": "^2.2.13"
+  }
+}

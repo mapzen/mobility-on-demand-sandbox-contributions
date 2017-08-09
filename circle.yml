@@ -1,0 +1,36 @@
+machine:
+  node:
+    version: 6.11.0
+
+dependencies:
+  pre:
+    - npm install -g bower
+    - npm install -g phantomjs-prebuilt
+    - npm install -g ember-cli
+  cache_directories:
+    - node_modules
+    - bower_components
+    - ~/nvm/v6.11.0/lib/node_modules/ember-cli
+    - ~/nvm/v6.11.0/bin/ember
+  override:
+    - npm prune && npm install
+    - bower prune && bower install
+    # - if [ ! -e ~/nvm/v4.5.0/bin/ember ]; then npm install -g ember-cli; else echo "ember-cli seems to be cached"; fi;
+
+
+# this might need to be set as well?
+# test:
+#   override:
+#     - npm test
+
+deployment:
+  staging:
+    branch: build-clean-app
+    commands:
+      - ember build --environment=staging
+      - aws s3 sync ./dist s3://trimet-mod-sandbox-dev/
+  production:
+    branch: production
+    commands:
+      - ember build --environment=production
+      - aws s3 sync ./dist s3://trimet-mod-sandbox/
