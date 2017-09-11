@@ -1,0 +1,17 @@
+{
+  "name": "oa-backend-mock",
+  "version": "0.0.1",
+  "description": "mock for OpenAddresses contribution management",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mapzen",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.0",
+    "country-list": "^1.1.0",
+    "express": "^4.15.4"
+  }
+}
