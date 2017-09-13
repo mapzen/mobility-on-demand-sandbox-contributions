@@ -10,6 +10,10 @@ app.use( bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 const countries = require('country-list')();
+const regions = require('country-region-data');
+// const regions = import { data } from 'country-region-data';
+// var regions = require('all-the-regions').regions
+// const subregions = import { subregions } from 'all-the-regions'; console.log(subregions.Micronesia);
 
 
 app.get('/countries', function (req, res) {
@@ -22,6 +26,7 @@ app.get('/countries', function (req, res) {
  */
 app.get('/regions', function (req, res) {
   console.log(req.query);
+  console.log(regions);
   res.sendStatus(200);
 });
 
