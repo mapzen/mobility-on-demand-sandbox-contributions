@@ -22,11 +22,17 @@ app.get('/countries', function (req, res) {
 
 /*
  req.query should have ....
- { country: "us" }
+ { country: "US" }
  */
+ // example: localhost:3000/regions?country=US
 app.get('/regions', function (req, res) {
-  console.log(req.query);
-  console.log(regions);
+  for (var key in regions){
+		if (regions[key].countryShortCode === req.query.country) {
+			var regionList = regions[key].regions;
+			res.body = regions[key].regions;
+		}
+	}
+	console.log(res.body);
   res.sendStatus(200);
 });
 
