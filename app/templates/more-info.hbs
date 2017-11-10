@@ -8,8 +8,8 @@
       <h4 class="ui dividing header">License information</h4>
       <label>Does the data have a license?</label>
       <button class="ui button {{if (eq model.license_exists true) "active"}}" {{action "licenseExists" true}}>Yes</button>
-      <button class="ui button" {{action "licenseExists" false}}>No</button>
-      <button class="ui button" {{action "licenseExists" "unknown"}}>I don't know</button>
+      <button class="ui button {{if (eq model.license_exists false) "active"}}" {{action "licenseExists" false}}>No</button>
+      <button class="ui button {{if (eq model.license_exists "unknown") "active"}}" {{action "licenseExists" "unknown"}}>I don't know</button>
     </div>
     {{#if (eq model.license_exists true)}}
       <form class="ui form">

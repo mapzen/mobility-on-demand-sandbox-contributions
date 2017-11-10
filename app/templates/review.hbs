@@ -1,104 +1,118 @@
 <div class="ui text container">
   <h3 class="first headroom">Review</h3>
-  <table class="ui table">
-    <thead>
-      <tr><th colspan="2">
-        Data
-      </th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td class="collapsing">
+   <div class="ui segment">
+    <h3 class="ui floated header">Data</h3><i class="icon edit" onClick={{action "editField" "contact"}}></i>
+    <div class="ui clearing divider"></div>
+    <div class="ui five column grid">
+      <div class="row">
+        <div class="two wide column">
           {{#if model.data_url}}Link to data{{/if}}
-          {{#if model.data_file}}Data upload file name{{/if}}
-        </td>
-        <td>
+          {{#if model.data_file}}Data upload file name{{/if}} 
+        </div>
+        <div class="fluid column">
           {{#if model.data_url}}{{model.data_url}}{{/if}}
           {{#if model.data_file}}{{model.data_file.name}}{{/if}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <table class="ui table">
-    <thead>
-      <tr>
-        <th colspan="2">
-          More info<button class="ui right floated basic icon button mini" onClick={{action "editField" "more-info"}}><i class="icon edit"></i></button>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui segment">
+    <h3 class="ui floated header">More Info</h3><i class="icon edit" onClick={{action "editField" "contact"}}></i>
+    <div class="ui clearing divider"></div>
+    <div class="ui sixteen column grid">
       {{#if model.license}}
-        <tr>
-          <td>
+        <div class="row">
+          <div class="six wide column">
             License name
-          </td>
-          <td>{{model.license}}</td>
-        </tr>
+          </div>
+          <div class="ten wide column">
+            {{model.license}}
+          </div>
+        </div>
+        <div class="ui section divider"></div>
       {{/if}}
       {{#if model.license_url}}
-        <tr>
-          <td>
+        <div class="row">
+          <div class="six wide column">
             License URL
-          </td>
-          <td>{{model.license_url}}</td>
-        </tr>
+          </div>
+          <div class="ten wide olumn">
+            {{model.license_url}}
+          </div>
+        </div>
+        <div class="ui section divider"></div>
       {{/if}}
       {{#if model.attribution}}
-        <tr>
-          <td>
+        <div class="row">
+          <div class="six wide column">
             Attribution
-          </td>
-          <td>{{model.attribution}}</td>
-        </tr>
+          </div>
+          <div class="ten wide column">
+            {{model.attribution}}
+          </div>
+        </div>
+        <div class="ui section divider"></div>
       {{/if}}
       {{#if model.attribution_text}}
-        <tr>
-          <td>
+        <div class="row">
+          <div class="six wide column">
             Attribution text
-          </td>
-          <td>{{model.attribution_text}}</td>
-        </tr>
+          </div>
+          <div class="ten wide column">
+            {{model.attribution_text}}
+          </div>
+        </div>
+        <div class="ui section divider"></div>
       {{/if}}
       {{#if model.update_frequency}}
-        <tr>
-          <td>
+        <div class="row">
+          <div class="six wide wide column">
             Update Frequency
-          </td>
-          <td>{{model.update_frequency}}</td>
-        </tr>
+          </div>
+          <div class="ten wide column">
+            {{model.update_frequency}}
+          </div>
+        </div>
+        <div class="ui section divider"></div>
       {{/if}}
       {{#if model.source}}
-        <tr>
-          <td>
+        <div class="row">
+          <div class="six wide column">
             Source
-          </td>
-          <td>{{model.source}}</td>
-        </tr>
+          </div>
+          <div class="ten wide column">
+            {{model.source}}
+          </div>
+        </div>
+        <div class="ui section divider"></div>
       {{/if}}
-    </tbody>
-  </table>
-  <table class="ui table">
-    <thead>
-      <tr>
-        <th colspan="2">Maintainer contact information<button class="ui right floated basic icon button mini" onClick={{action "editField" "contact"}}><i class="icon edit"></i></button></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          Name
-        </td>
-        <td>{{#if model.maintainer_name}}{{model.maintainer_name}}{{else}}<i>not provided</i>{{/if}}</td>
-      </tr>
-      <tr>
-        <td>
-          Email
-        </td>
-        <td>{{model.maintainer_email}}</td>
-      </tr>
-    </tbody>
-  </table>
+    </div>
+  </div>
+  <div class="ui segment">
+    <h3 class="ui floated header">Maintainer contact information</h3><i class="icon edit" onClick={{action "editField" "contact"}}></i>
+    <div class="ui clearing divider"></div>
+    <div class="ui five column grid">
+      <div class="row">
+        <div class="two wide column">
+          Email 
+        </div>
+        <div class="fluid column">
+          {{model.maintainer_email}}
+        </div>
+      </div>
+      {{#if model.maintainer_name}}
+        <div class="ui section divider"></div>
+        <div class="row">
+          <div class="two wide column">
+            Name
+          </div>
+          <div class="fluid column">
+            {{model.maintainer_name}}
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
   <div class="ui segment">
     <h3 class="ui floated header">Column mapping</h3><i class="icon edit" onClick={{action "editField" "mapping"}}></i>
     <div class="ui clearing divider"></div>
