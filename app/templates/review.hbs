@@ -1,181 +1,183 @@
 <div class="ui text container">
   <h3 class="first headroom"> Review </h3>
-  <div class="ui attached message">
-    <h3 class="ui header">Data</h3>
-  </div>
-  <div class="ui segment attached">
-    <div class="ui five column grid">
-      <div class="row">
-        <div class="four wide column">
-          {{#if model.data_url}}
-            <div class="field label">Link to Data</div>
-          {{/if}}
-          {{#if model.data_file}}
-            <div class="field label">Data upload file name</div>
-          {{/if}}
-        </div>
-        <div class="fluid column">
-          {{#if model.data_url}}{{model.data_url}}{{/if}}
-          {{#if model.data_file}}{{model.data_file.name}}{{/if}}
-        </div>
-      </div>
+  <div class="form-content">
+    <div class="ui attached message">
+      <h3 class="ui header">Data</h3>
     </div>
-  </div>
-  <div class="ui hidden divider"></div>
-  <div class="ui attached message">
-    <button class="ui labeled icon right floated blue basic button mini" onClick={{action "editField" "more-info"}}><i class="icon edit"></i>Edit</button>
-    <h3 class="ui header">More Info</h3>
-  </div>
-  <div class="ui segment attached">
-    <div class="ui sixteen column grid">
-      {{#if model.license}}
-      <div class="row">
-        <div class="seven wide column">
-          <div class="field label">License Name</div>
-          <div class="info value">{{model.license}}</div>
-        </div>
-        <div class="nine wide column">
-          <div class="field label">License URL</div>
-          <div class="info value">{{model.license_url}}</div>
-        </div>
-      </div>
-      <div class="ui fitted divider"></div>
-      {{/if}}
-      {{#if model.attribution}}
-        <div class="row">
-          <div class="seven wide column">
-            <div class="field label">Attribution</div>
-            <div class="info value">{{model.attribution}}</div>
-          </div>
-          <div class="nine wide column">
-            <div class="field label">Attribution Text</div>
-            <div class="info value">{{model.attribution_text}}</div>
-          </div>
-        </div>
-        <div class="ui fitted divider"></div>
-      {{/if}}
-      {{#if model.update_frequency}}
-        <div class="row">
-          <div class="seven wide wide column">
-            <div class="field label">Update Frequency</div>
-          </div>
-          <div class="nine wide column">
-            {{model.update_frequency}}
-          </div>
-        </div>
-        <div class="ui fitted divider"></div>
-      {{/if}}
-      {{#if model.source}}
-        <div class="row">
-          <div class="seven wide column">
-            <div class="field label">Source</div>
-          </div>
-          <div class="nine wide column">
-            {{model.source}}
-          </div>
-        </div>
-        <div class="ui fitted divider"></div>
-      {{/if}}
-    </div>
-  </div>
-  <div class="ui hidden divider"></div>
-  <div class="ui attached message">
-    <button class="ui labeled icon right floated blue basic button mini" onClick={{action "editField" "contact"}}><i class="icon edit"></i>Edit</button>
-    <h3 class="ui header">Maintainer Contact Information</h3>
-  </div>
-  <div class="ui segment attached">
-    <div class="ui five column grid">
-      {{#if model.maintainer_email}}
-      <div class="row">
-        <div class="four wide column">
-          <div class="field label">Email</div>
-        </div>
-        <div class="fluid column">
-          {{model.maintainer_email}}
-        </div>
-      </div>
-      {{/if}}
-      {{#if model.maintainer_name}}
-        <div class="ui fitted divider"></div>
+    <div class="ui segment attached">
+      <div class="ui five column grid">
         <div class="row">
           <div class="four wide column">
-            <div class="field label">Name</div>
+            {{#if model.data_url}}
+              <div class="field label">Link to Data</div>
+            {{/if}}
+            {{#if model.data_file}}
+              <div class="field label">Data upload file name</div>
+            {{/if}}
           </div>
           <div class="fluid column">
-            {{model.maintainer_name}}
+            {{#if model.data_url}}{{model.data_url}}{{/if}}
+            {{#if model.data_file}}{{model.data_file.name}}{{/if}}
           </div>
         </div>
-      {{/if}}
+      </div>
     </div>
-  </div>
-  <div class="ui hidden divider"></div>
-  <div class="ui attached message">
-    <button class="ui labeled icon right floated blue basic button mini" onClick={{action "editField" "data-format"}}><i class="icon edit"></i>Edit</button>
-    <h3 class="ui header">Data format</h3>
-  </div>
-  <div class="ui segment attached">
-    {{#each-in model.oaFields as |field properties|}}
-      {{#if properties.fields}}
-        <table class="ui definition table">
-          <tbody>
-            <tr>
-              <td class="two wide column">Field</td>
-              <td>
-                {{#if (eq field "number")}}
-                  house number
-                {{else}}
-                  {{field}}
-                {{/if}}
-              </td>
-            </tr>
-            <tr>
-              <td>Column(s)</td>
-              <td>{{properties.fields}}</td>
-            </tr>
-            {{#if properties.function}}
+    <div class="ui hidden divider"></div>
+    <div class="ui attached message">
+      <span class="review edit" onClick={{action "editField" "more-info"}}> <i class="icon edit"></i>Edit</span>
+      <h3 class="ui header">More Info</h3>
+    </div>
+    <div class="ui segment attached">
+      <div class="ui sixteen column grid">
+        {{#if model.license}}
+        <div class="row">
+          <div class="seven wide column">
+            <div class="field label">License Name</div>
+            <div class="info value">{{model.license}}</div>
+          </div>
+          <div class="nine wide column">
+            <div class="field label">License URL</div>
+            <div class="info value">{{model.license_url}}</div>
+          </div>
+        </div>
+        <div class="ui fitted divider"></div>
+        {{/if}}
+        {{#if model.attribution}}
+          <div class="row">
+            <div class="seven wide column">
+              <div class="field label">Attribution</div>
+              <div class="info value">{{model.attribution}}</div>
+            </div>
+            <div class="nine wide column">
+              <div class="field label">Attribution Text</div>
+              <div class="info value">{{model.attribution_text}}</div>
+            </div>
+          </div>
+          <div class="ui fitted divider"></div>
+        {{/if}}
+        {{#if model.update_frequency}}
+          <div class="row">
+            <div class="seven wide wide column">
+              <div class="field label">Update Frequency</div>
+            </div>
+            <div class="nine wide column">
+              {{model.update_frequency}}
+            </div>
+          </div>
+          <div class="ui fitted divider"></div>
+        {{/if}}
+        {{#if model.source}}
+          <div class="row">
+            <div class="seven wide column">
+              <div class="field label">Source</div>
+            </div>
+            <div class="nine wide column">
+              {{model.source}}
+            </div>
+          </div>
+          <div class="ui fitted divider"></div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+    <div class="ui attached message">
+      <span class="review edit" onClick={{action "editField" "contact"}}><i class="icon edit"></i>Edit</span>
+      <h3 class="ui header">Maintainer Contact Information</h3>
+    </div>
+    <div class="ui segment attached">
+      <div class="ui five column grid">
+        {{#if model.maintainer_email}}
+        <div class="row">
+          <div class="four wide column">
+            <div class="field label">Email</div>
+          </div>
+          <div class="fluid column">
+            {{model.maintainer_email}}
+          </div>
+        </div>
+        {{/if}}
+        {{#if model.maintainer_name}}
+          <div class="ui fitted divider"></div>
+          <div class="row">
+            <div class="four wide column">
+              <div class="field label">Name</div>
+            </div>
+            <div class="fluid column">
+              {{model.maintainer_name}}
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+    <div class="ui attached message">
+      <span class="review edit" onClick={{action "editField" "data-format"}}><i class="icon edit"></i>Edit</span>
+      <h3 class="ui header">Data format</h3>
+    </div>
+    <div class="ui segment attached">
+      {{#each-in model.oaFields as |field properties|}}
+        {{#if properties.fields}}
+          <table class="ui definition table">
+            <tbody>
               <tr>
-                <td>Function</td>
+                <td class="two wide column">Field</td>
                 <td>
-                  {{properties.function}}
+                  {{#if (eq field "number")}}
+                    house number
+                  {{else}}
+                    {{field}}
+                  {{/if}}
                 </td>
               </tr>
-            {{/if}}
-            {{#if (eq field "street")}}
               <tr>
-                <td>May contain unit number</td>
-                <td>
-                  {{properties.may_contain_units}}
-                </td>
+                <td>Column(s)</td>
+                <td>{{properties.fields}}</td>
               </tr>
-            {{/if}}
-          </tbody>
-        </table>
-      {{/if}}
-    {{/each-in}}
+              {{#if properties.function}}
+                <tr>
+                  <td>Function</td>
+                  <td>
+                    {{properties.function}}
+                  </td>
+                </tr>
+              {{/if}}
+              {{#if (eq field "street")}}
+                <tr>
+                  <td>May contain unit number</td>
+                  <td>
+                    {{properties.may_contain_units}}
+                  </td>
+                </tr>
+              {{/if}}
+            </tbody>
+          </table>
+        {{/if}}
+      {{/each-in}}
+    </div>
+    <div class="ui hidden divider"></div>
+    <div class="review-nav">
+      <button class="ui button red left floated" onClick={{action "openModal" "review-cancel"}}>Cancel</button>
+      <button class="ui button green right floated" onClick={{action "submit"}}>Submit</button>
+    </div>
+    {{#ui-modal name="review-cancel" class="review-cancel" onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
+      <i class="close icon"></i>
+      <div class="header">
+        Cancel Submission
+      </div>
+      <div class="content">
+        <div class="description">
+          <p>Are you sure you want to start over? All changes made will be erased. </p>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ui black deny compact button">
+          No
+        </div>
+        <div class="ui positive right labeled icon compact button">
+          Yes
+          <i class="checkmark icon"></i>
+        </div>
+      </div>
+    {{/ui-modal}}
   </div>
-  <div class="ui hidden divider"></div>
-  <div class="review-nav">
-    <button class="ui button red left floated" onClick={{action "openModal" "review-cancel"}}>Cancel</button>
-    <button class="ui button green right floated" onClick={{action "submit"}}>Submit</button>
-  </div>
-  {{#ui-modal name="review-cancel" class="review-cancel" onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
-    <i class="close icon"></i>
-    <div class="header">
-      Cancel Submission
-    </div>
-    <div class="content">
-      <div class="description">
-        <p>Are you sure you want to start over? All changes made will be erased. </p>
-      </div>
-    </div>
-    <div class="actions">
-      <div class="ui black deny button">
-        No
-      </div>
-      <div class="ui positive right labeled icon button">
-        Yes
-        <i class="checkmark icon"></i>
-      </div>
-    </div>
-  {{/ui-modal}}
 </div>

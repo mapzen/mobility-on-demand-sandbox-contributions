@@ -1,26 +1,10 @@
+/* general styling */
 .ui.negative.message.mobile {
   display: none;
 }
 
-@media only screen and (max-width: 510px) {
-  .ui.negative.message.mobile {
-    display: block;
-  }
-  .content {
-    display: none;
-  }
-}
-
 .ui.button {
-  margin-top: 15px;
-}
-.inactiveField {
-  cursor: pointer;
-}
-
-/*probably not ideal way to handle this*/
-.hidden {
-  visibility: hidden;
+  margin-top: 10px;
 }
 
 .ui.inverted.vertical.masthead.center.aligned.segment.teal {
@@ -28,7 +12,6 @@
   margin-bottom: 30px;
 }
 
-/* general font size styling */
 h1 {
   font-size: 48px !important;
 }
@@ -49,6 +32,51 @@ h5 {
   font-size: 16px !important;
 }
 
+:root {
+  --error: #e50b17;
+  --error-hover: #94070f;
+  --success: #69cb01;
+  --success-hover: #468701;
+  --link: #1b90f9;
+  --link-hover: #0564ba;
+  --button-next: #00b5ad;
+  --button-next-hover: #00938d;
+  --button-back: #777777;
+  --button-back-hover: #444444;
+}
+
+.ui.warning.message {
+  display: none;
+}
+
+.form-content {
+  margin-top: 2em;
+}
+
+.nav-button {
+  margin-top: 4em !important;
+}
+
+#back {
+  background: var(--button-back);
+}
+
+#back:hover {
+  background: var(--button-back-hover);
+}
+
+#next {
+  background: var(--button-next);
+}
+
+#next:hover {
+  background: var(--button-next-hover);
+}
+
+span.required {
+  color: #da2929;
+}
+
 /* add feed progress tabs styling */
 nav {
   padding: 0px;
@@ -57,28 +85,71 @@ nav {
 }
 
 nav ul {
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-end;
   padding: 0px;
   margin: 0px;
+  list-style: none;
 }
 
 nav ul li {
-  display: inline-block;
-  padding: 10px 15px 5px 15px;
-  margin: 0px 20px;
+  padding: 25px 10px 5px 10px;
+  margin: 0px 15px;
   color: lightgray;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   border-bottom: solid 3px gray;
 }
 
 nav ul li.active {
   color: white;
   font-weight: bold;
-  border-bottom: solid 3px white;
+  letter-spacing: 1px;
+  border-bottom: solid 4px white;
+}
+
+@media only screen and (max-width: 510px) {
+    nav ul li {
+      display: none;
+    }
+    nav ul li.active {
+      display: block;
+    }
+    nav ul li.active + li {
+      display: block;
+    }
+    .ui.negative.message.mobile {
+      display: block;
+    }
+    .intro {
+      display: none;
+    }
+}
+
+/* styling for data source page */
+.ui.url.input {
+  width: 80%;
+}
+
+.ui.horizontal.divider {
+  width: 80%;
+  margin: 35px auto;
+  margin-bottom: 25px; /* upload button has margin-top already */
+}
+
+.ui.upload.button {
+  width: 45%;
+  background: var(--link);
+  color: white;
+}
+
+.ui.upload.button:hover {
+  background: var(--link-hover);
 }
 
 /* styling for more-info page */
-.ui.form.field {
-  margin-top: 0.5em;
+.ui.form .inline.sharealike.field {
+  margin-top: 1em;
 }
 
 .field .ui.button.active {
@@ -86,23 +157,30 @@ nav ul li.active {
   color: white;
 }
 
-.divider.column {
-  position: relative;
-  padding: 25px;
+.field .ui.button.none.active {
+  background: gray;
+  color: white;
+}
+
+/* styling for data format page */
+.inactiveField {
+  cursor: pointer;
+}
+
+/*probably not ideal way to handle this*/
+.hidden {
+  visibility: hidden;
 }
 
 /* styling for review page */
-.edit.ui.button {
-  margin: 0px;
-}
-
 .review-nav .ui.button {
-  margin: 15px 0px;
+  margin-top: 4em !important;
+  margin-bottom: 20px;
 }
 
 .field.label {
   font-weight: bold;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   color: #134045;
   text-transform: uppercase;
 }
@@ -117,4 +195,16 @@ nav ul li.active {
 
 .ui.fitted.divider:last-child {
   display: none;
+}
+
+.review.edit {
+  color: var(--link);
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  font-size: small;
+}
+
+.review.edit:hover {
+  color: var(--link-hover);
 }
