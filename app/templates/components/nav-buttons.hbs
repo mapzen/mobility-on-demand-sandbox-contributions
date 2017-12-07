@@ -1,6 +1,6 @@
 <div class="ui two column padded middle aligned centered color grid">
 	{{#if back}}
-		<div class="eight wide column left aligned"><button class="ui button yellow" id="back" onClick={{action "sendChangeRoute" back}}>{{backwardsButtonText}}</button></div>
+		<div class="eight wide column left aligned"><button class="ui button yellow" id="back" onClick={{action "sendChangeRoute" back changeset}}>{{backwardsButtonText}}</button></div>
 	{{else}}
 		<div class="eight wide column left aligned"></div>
 	{{/if}}
