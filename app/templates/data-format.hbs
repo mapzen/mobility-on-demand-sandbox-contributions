@@ -7,14 +7,14 @@
     <table class="ui celled table">
       <thead>
         <tr>
-          {{#each-in model.submission.oaFields as |field properties|}}
+          {{#each-in model.oaFields as |field properties|}}
             {{#if (eq field "lon")}}
-              {{#if (eq model.webServiceResponse.conform.type "csv")}}
+              {{#if (eq model.type "csv")}}
                 <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>{{field}}</a></th>
               {{/if}}
             {{/if}}
             {{#if (eq field "lat")}}
-              {{#if (eq model.webServiceResponse.conform.type "csv")}}
+              {{#if (eq model.type "csv")}}
                 <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>{{field}}</a></th>
               {{/if}}
             {{/if}}
@@ -36,7 +36,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each-in model.submission.exampleRows as |rows fields|}}
+        {{#each-in model.exampleRows as |rows fields|}}
           <tr>
             {{#each-in fields as |field label|}}
               {{#unless (eq field "lon")}}
@@ -45,12 +45,12 @@
                 {{/unless}}
               {{/unless}}
               {{#if (eq field "lon")}}
-                {{#if (eq model.webServiceResponse.conform.type "csv")}}
+                {{#if (eq model.type "csv")}}
                   <td class={{if (eq field currentField) "active"}}>{{#each label as |value|}}{{value}} {{/each}}</td>
                 {{/if}}
               {{/if}}
               {{#if (eq field "lat")}}
-                {{#if (eq model.webServiceResponse.conform.type "csv")}}
+                {{#if (eq model.type "csv")}}
                   <td class={{if (eq field currentField) "active"}}>{{#each label as |value|}}{{value}} {{/each}}</td>
                 {{/if}}
               {{/if}}
@@ -59,7 +59,7 @@
         {{/each-in}}
       </tbody>
     </table>
-    {{#each-in model.submission.oaFields as |field properties|}}
+    {{#each-in model.oaFields as |field properties|}}
       {{#if (eq field currentField)}}
         <form class="ui form segment">
           {{#if (eq properties.function null)}}
@@ -104,12 +104,12 @@
               {{/if}}
             </label>
             {{#unless (eq properties.function "join")}}
-              {{select-column field=field properties=properties columnHeadings=columnHeadings model=model}}
+              {{select-column field=field properties=properties model=model}}
             {{/unless}}
             {{#if (eq properties.function "join")}}
               {{join-column field=field properties=properties showAdditionalJoinDropdown=showAdditionalJoinDropdown model=model}}
             {{else if (eq properties.function "split")}}
-              {{split-column field=field properties=properties columnHeadings=columnHeadings model=model}}
+              {{split-column field=field properties=properties model=model}}
             {{/if}}
             <div class="field nav-buttons">
               {{#unless (or (eq currentField "lat") (eq currentField "number"))}}

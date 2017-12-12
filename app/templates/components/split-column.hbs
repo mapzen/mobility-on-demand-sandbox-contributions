@@ -4,7 +4,7 @@
 {{#if (eq field "street")}}
   <div class="row">
     <div class="ui unit checkbox">
-      {{#if this.model.submission.oaFields.street.may_contain_units}}
+      {{#if this.model.oaFields.street.may_contain_units}}
         <input type="checkbox" checked onClick={{action "setMayContainUnits"}}>
       {{else}}
         <input type="checkbox" onClick={{action "setMayContainUnits"}}>
@@ -12,16 +12,16 @@
       <label>May contain unit number</label>
     </div>
   </div>
-  {{#if this.model.submission.oaFields.street.may_contain_units}}
+  {{#if this.model.oaFields.street.may_contain_units}}
     <button class="ui small button basic green" onClick={{action "extractionFunction" "postfixed_unit_pattern" field}}>Remove postfix unit</button>
   {{/if}}
   <button class="ui small button basic green" onClick={{action "extractionFunction" "postfixed_street_pattern" field}}>Remove prefix number</button>
 {{/if}}
 
 {{#if (eq field "number")}}
-<button class="ui small button basic green" onClick={{action "extractionFunction" "prefixed_number_pattern" field}}>Remove postfix street</button>
+  <button class="ui small button basic green" onClick={{action "extractionFunction" "prefixed_number_pattern" field}}>Remove postfix street</button>
 {{/if}}
 
 {{#if (eq field "unit")}}
-<button class="ui small button basic green" onClick={{action "extractionFunction" "postfixed_street_with_units_pattern" field}}>Use postfix unit</button>
+  <button class="ui small button basic green" onClick={{action "extractionFunction" "postfixed_street_with_units_pattern" field}}>Use postfix unit</button>
 {{/if}}
