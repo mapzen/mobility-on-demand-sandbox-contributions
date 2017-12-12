@@ -3,9 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   showAdditionalJoinDropdown: null,
   properties: null,
-  // columnHeadings: Ember.computed('model.submission', function(){
-  //   return this.model.webServiceResponse.source_data.fields;
-  // }),
   remainingColumnHeadings: Ember.computed('properties.fields.[]', function(){
     var headings = this.properties.fields;
     var fields = this.model.get('source_data_fields');

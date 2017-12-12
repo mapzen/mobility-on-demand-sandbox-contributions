@@ -6,15 +6,6 @@ export default Ember.Route.extend({
     return Ember.$.ajax({ url })
   },
   model: function(){
-    // for development, remove before merging
-    
-    
     return this.get('store').peekAll('submission').get('firstObject');
-    // request will change once app is set up to work with web service
-    // var request = 'fields?source=http://gis.brevardcounty.us/gissrv/rest/services/Accela/AccelaGIS_Layers_WKID2881/MapServer/5';
-
-
-    // var webServiceResponse = this.getWebServiceResponse(request);
-      
   }
 });

@@ -32,12 +32,10 @@ export default Ember.Controller.extend(sharedActions, {
             type: response.type
           })
         ).then(()=>this.transitionToRoute(route))
-
-        
-        // this.transitionToRoute(route);
-        
       } else if (this.get('dataFile')){
         this.store.createRecord('submission', {data_file: this.get('dataFile')});
+        // this.transitionToRoute(route);
+        
       } else {
         // set up form validation requiring either url or file
       }
