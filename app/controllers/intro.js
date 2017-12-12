@@ -12,7 +12,8 @@ export default Ember.Controller.extend(sharedActions, {
   actions: {
     setURL: function(input){
       this.set('dataFile', null);
-      var url = input.currentTarget.value;
+      // example: http://gis.brevardcounty.us/gissrv/rest/services/Accela/AccelaGIS_Layers_WKID2881/MapServer/5
+      var url = 'fields?source=' + input.currentTarget.value;
       this.set('dataURL', url);
     },
     uploadFile: function(){
@@ -23,13 +24,23 @@ export default Ember.Controller.extend(sharedActions, {
     changeRoute: function(route){
       // Create new record in store for this submission, with data link or data file.
       if (this.get('dataURL')){
-        this.store.createRecord('submission', {data_url: this.get('dataURL')});
+        var url = this.get('dataURL');
+        Ember.$.ajax({ url }).then((response) => this.store.createRecord('submission', {
+            data_url: response.data,
+            source_data_fields: response.source_data.fields,
+            source_data_results: response.source_data.results,
+            type: response.type
+          })
+        ).then(()=>this.transitionToRoute(route))
+
+        
+        // this.transitionToRoute(route);
+        
       } else if (this.get('dataFile')){
         this.store.createRecord('submission', {data_file: this.get('dataFile')});
       } else {
         // set up form validation requiring either url or file
       }
-      this.transitionToRoute(route);
     }
   }
 });

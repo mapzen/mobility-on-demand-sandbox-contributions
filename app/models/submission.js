@@ -1,9 +1,9 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  // data_url: DS.attr('string'),
-  data_url: 'api/responses',
+  data_url: DS.attr('string'),
   data_file: DS.attr(),
+  type: DS.attr('string'),
   source: DS.attr('string'),
   update_frequency: DS.attr(),
   edit_mode: false,
@@ -16,6 +16,8 @@ export default DS.Model.extend({
   attribution_text: DS.attr('string'),
   maintainer_name: DS.attr('string'),
   maintainer_email: DS.attr('string'),
+  source_data_fields: DS.attr(),
+  source_data_results: DS.attr(),
   oaFields:{
     lon:{
       fields: [],
