@@ -4,7 +4,6 @@ import sharedActions from '../mixins/shared-actions';
 export default Ember.Controller.extend(sharedActions, {
   dataURL: null,
   dataFile: null,
-  dataSource: true,
   fileName: Ember.computed('dataFile', function(){
     if (this.get('dataFile')){
       return this.get('dataFile').name
@@ -29,9 +28,7 @@ export default Ember.Controller.extend(sharedActions, {
         this.store.createRecord('submission', {data_file: this.get('dataFile')});
       } else {
         // set up form validation requiring either url or file
-        return this.set('dataSource', false);
       }
-      this.set('dataSource', true);
       this.transitionToRoute(route);
     }
   }
