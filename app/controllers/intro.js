@@ -26,16 +26,15 @@ export default Ember.Controller.extend(sharedActions, {
       if (this.get('dataURL')){
         var url = this.get('dataURL');
         Ember.$.ajax({ url }).then((response) => this.store.createRecord('submission', {
-            data_url: response.data,
-            source_data_fields: response.source_data.fields,
-            source_data_results: response.source_data.results,
-            type: response.type
-          })
-        ).then(()=>this.transitionToRoute(route))
+          data_url: response.data,
+          source_data_fields: response.source_data.fields,
+          source_data_results: response.source_data.results,
+          type: response.type
+        })).then(()=>this.transitionToRoute(route))
       } else if (this.get('dataFile')){
         this.store.createRecord('submission', {data_file: this.get('dataFile')});
         // this.transitionToRoute(route);
-        
+
       } else {
         // set up form validation requiring either url or file
       }
