@@ -108,6 +108,10 @@ span.required {
   color: #da2929;
 }
 
+.ui.text.container.flow {
+  margin-bottom: 150px;
+}
+
 /* add feed progress tabs styling */
 nav {
   padding: 0px;
