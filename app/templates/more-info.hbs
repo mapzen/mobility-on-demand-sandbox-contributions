@@ -1,7 +1,7 @@
 <div class="ui text container">
-  <h3 class="first headroom">More information</h3>
+  <h3 class="first headroom">More Information</h3>
   <p>
-    We'll gather more info from the user about license/attribution/update frequency here.
+    Clear licensing information and data update frequency allows for the greatest number of people to use a dataset, so please provide as much detail as possible.
   </p>
   <div class="form-content">
     <div class="ui tiny message">
@@ -10,7 +10,7 @@
     </div>
     <div class="ui form segment">
       <div class="required field">
-        <h4 class="ui dividing header">License information</h4>
+        <h4 class="ui dividing header">License</h4>
         <label>Does the data have a license?</label>
         <button class="ui compact button {{if (eq model.license_exists true) "active"}}" {{action "licenseExists" true}}>Yes</button>
         <button class="ui compact button none {{if (eq model.license_exists false) "active"}}" {{action "licenseExists" false}}>No</button>
@@ -72,9 +72,9 @@
       {{/if}}
       <div class="ui hidden divider"></div>
       <div class="field">
-        <h4 class="ui dividing header">Data information</h4>
+        <h4 class="ui dividing header">Data</h4>
         <div class="required field">
-          <label>Frequency of update</label>
+          <label>Frequency of data update</label>
           {{#ui-dropdown class="selection" selected=model.update_frequency onChange=(action "setFrequency") as | execute mapper|}}
             <div class="default text">Frequency</div>
             <i class="dropdown icon"></i>

@@ -9,14 +9,18 @@
   <div class="intro">
     <h3 class="first headroom">Welcome!</h3>
     <p>
-      Provide link to data or upload data. (add information about accepted formats)
+      Provide link to data or upload data.<br>
+    </p>
+    <p>
+      <i>Accepted formats: shapefile, csv, ArcGIS, and geoJSON.</i>
+      <!-- (*add question mark icon with this in popup text: For more information, visit https://github.com/openaddresses/submit-service/blob/master/README.md) -->
     </p>
     <div class="form-content">
       <div class="ui url labeled input">
         <div class="ui label">
           URL
         </div>
-        <input type="text" placeholder="URL for hosted data" onChange={{action "setURL"}}>
+        <input type="text" placeholder="http://..." onChange={{action "setURL"}}>
       </div>
       <div class="ui horizontal divider">
         Or
