@@ -3,7 +3,7 @@
 </div>
 {{#each properties.fields as |column index|}}
   {{#if (gte index 1)}}
-    <a class="item">
+    <a class="item link-text">
       <i class="plus icon"></i>
     </a>
   {{/if}}
@@ -35,7 +35,7 @@
   </div>
 {{/each}}
 {{#if showAdditionalJoinDropdown}}
-  <a class="item">
+  <a class="item link-text">
     <i class="plus icon"></i>
   </a>
   <div class="fifteen wide field">
@@ -56,7 +56,7 @@
 {{/if}}
 <div>
   {{#if showAdditionalJoinButton}}
-    <div class="add-join link" onClick={{action "addJoin" field}}>
+    <div class="add-join link-text" onClick={{action "addJoin" field}}>
       <i class="plus icon"></i> Add column
     </div>
   {{/if}}
