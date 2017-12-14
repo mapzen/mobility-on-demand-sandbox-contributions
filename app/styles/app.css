@@ -116,6 +116,7 @@ span.required {
 nav {
   padding: 0px;
   margin: 0px;
+  background-color: rgba(0,0,0,0.5);
 }
 
 nav ul {
