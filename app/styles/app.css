@@ -3,6 +3,14 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+body, p {
+  color: #444;
+}
+
+input:placeholder-shown {
+  color: #bfbfbf;
+}
+
 .ui.negative.message.mobile {
   display: none;
 }
