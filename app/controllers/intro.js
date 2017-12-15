@@ -8,7 +8,6 @@ export default Ember.Controller.extend(sharedActions, {
   showErrorState: false,
   errorMessages: [],
   dataFile: null,
-  dataSource: true,
   fileName: Ember.computed('dataFile', function(){
     if (this.get('dataFile')){
       return this.get('dataFile').name
