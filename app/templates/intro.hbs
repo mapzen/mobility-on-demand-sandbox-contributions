@@ -10,7 +10,10 @@
     <h3 class="first headroom">Welcome!</h3>
     {{#with (changeset model DataURLValidator) as |changeset|}}
       <p>
-        Provide link to data or upload data. (add information about accepted formats)
+        Provide link to data or upload data.
+      </p>
+      <p>
+        <i>Accepted formats are .csv, .geojson, ArcGIS service, and .zip (which contain .csv, .geojson, or .dbf)</i>
       </p>
       <div class="form-content">
         <div class="ui url labeled input">

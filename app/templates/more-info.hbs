@@ -1,7 +1,7 @@
 <div class="ui text container">
-  <h3 class="first headroom">More information</h3>
+  <h3 class="first headroom">More Information</h3>
   <p>
-    We'll gather more info from the user about license/attribution/update frequency here.
+    Clear licensing information and data update frequency allows for the greatest number of people to use a dataset, so please provide as much detail as possible.
   </p>
   <div class="form-content">
     <div class="ui tiny message">
@@ -10,7 +10,7 @@
     </div>
     <div class="ui form segment">
       <div class="required field">
-        <h4 class="ui dividing header">License information</h4>
+        <h4 class="ui dividing header">License</h4>
         <label>Does the data have a license?</label>
         <button class="ui compact button {{if (eq model.license_exists true) "active"}}" {{action "licenseExists" true}}>Yes</button>
         <button class="ui compact button none {{if (eq model.license_exists false) "active"}}" {{action "licenseExists" false}}>No</button>
@@ -22,7 +22,7 @@
             <label> Add a license <span class="required"> * </span> </label>
             <div class="grouped fields">
               <div class="field">
-                {{ui-radio name="license" label="Choose from license" value="choose" current=license onChange=(action (mut license))}}
+                {{ui-radio name="license" label="Choose from list of licenses" value="choose" current=license onChange=(action (mut license))}}
               </div>
               <div class="field">
                 {{ui-radio name="license" label="Provide link to license" value="provide" current=license onChange=(action (mut license))}}
@@ -31,9 +31,8 @@
           </div>
           {{#if (eq license "choose")}}
           <div class="required twelve wide field">
-            <label> Choose a license </label>
             {{#ui-dropdown class="license selection" selected=model.license onChange=(action "selectLicense") as | execute mapper|}}
-              <div class="default text">Licenses</div>
+              <div class="default text">Choose a license</div>
               <i class="dropdown icon"></i>
               <div class="menu">
                 {{#each licenses as | license |}}
@@ -47,8 +46,7 @@
           {{/if}}
           {{#if (eq license "provide")}}
             <div class="required twelve wide field">
-              <label> Provide a link to license </label>
-              <input type="text" class="license" placeholder="www.sample.com..." value={{model.user_submitted_url}} onInput={{action "userSubmittedLicense"}}>
+              <input type="text" class="license" placeholder="http://..." value={{model.user_submitted_url}} onInput={{action "userSubmittedLicense"}}>
             </div>
           {{/if}}
         </form>
@@ -58,23 +56,23 @@
           </div>
         </div>
       {{/if}}
-      <div class="required field">
-        <label>Does the license require attribution?</label>
-        <button class="ui compact button {{if (eq model.attribution true) "active"}}" {{action "setAttribution" true}}>Yes</button>
-        <button class="ui compact button none {{if (eq model.attribution false) "active"}}" {{action "setAttribution" false}}>No</button>
-        <button class="ui compact button none {{if (eq model.attribution "unknown") "active"}}" {{action "setAttribution" "unknown"}}>I don't know</button>
-      </div>
-      {{#if (eq model.attribution true)}}
-        <div class="required field">
-          <label>Enter text for attribution</label>
-          <input type="text" value="{{model.attribution_text}}" onInput={{action "setAttributionText"}}>
-        </div>
-      {{/if}}
       <div class="ui hidden divider"></div>
       <div class="field">
-        <h4 class="ui dividing header">Data information</h4>
+        <h4 class="ui dividing header">Data</h4>
         <div class="required field">
-          <label>Frequency of update</label>
+          <label>Does the data require attribution?</label>
+          <button class="ui compact button {{if (eq model.attribution true) "active"}}" {{action "setAttribution" true}}>Yes</button>
+          <button class="ui compact button none {{if (eq model.attribution false) "active"}}" {{action "setAttribution" false}}>No</button>
+          <button class="ui compact button none {{if (eq model.attribution "unknown") "active"}}" {{action "setAttribution" "unknown"}}>I don't know</button>
+        </div>
+        {{#if (eq model.attribution true)}}
+          <div class="required field">
+            <label>Enter text for attribution</label>
+            <input type="text" value="{{model.attribution_text}}" onInput={{action "setAttributionText"}}>
+          </div>
+        {{/if}}
+        <div class="required field">
+          <label>Frequency of data update</label>
           {{#ui-dropdown class="selection" selected=model.update_frequency onChange=(action "setFrequency") as | execute mapper|}}
             <div class="default text">Frequency</div>
             <i class="dropdown icon"></i>

@@ -42,7 +42,7 @@ export default Ember.Controller.extend(sharedActions, {
       this.model.set('data_url',  changeset.get('data_url'));
       return this.checkDataUrlError(changeset);
     // If there is nothing, throw an error
-    } else return new Promise((resolve) => resolve(['You need a file or a url to proceed']));
+    } else return new Promise((resolve) => resolve(['Provide a file or a url to proceed']));
   },
   resetErrorState: function () {
     Ember.set(this, 'showErrorState', false);

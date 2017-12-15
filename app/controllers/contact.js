@@ -32,7 +32,7 @@ export default Ember.Controller.extend(sharedActions, {
       this.model.set('maintainer_name', changeset.get('maintainer_name'));
       this.model.set('maintainer_email',  changeset.get('maintainer_email'));
       return this.checkFormError(changeset);
-    } else return new Promise((resolve) => resolve(['We need your e-mail to proceed']));
+    } else return new Promise((resolve) => resolve(['Provide an e-mail address to proceed']));
   },
   actions: {
     changeRoute: function(route, changeset){

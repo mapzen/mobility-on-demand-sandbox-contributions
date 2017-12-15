@@ -1,5 +1,8 @@
 <div class="ui text container">
   <h3 class="first headroom">Contact information</h3>
+  <p>
+    Enter the email address for the person or group that would like to receive updates on the status of this dataset.
+  </p>
   <div class="form-content">
     <div class="ui tiny message">
       <p> <span class="required"> * </span>
@@ -14,7 +17,7 @@
               type="text"
               value=(get changeset "maintainer_name")
               changeset=changeset
-              placeholder="name"
+              placeholder="What should we call you?"
               showErrorState=showFormErrorState
             }}
           </div>
@@ -26,7 +29,7 @@
             type="text"
             value=(get changeset "maintainer_email")
             changeset=changeset
-            placeholder="email address"
+            placeholder="you@example.com"
             showErrorState=showFormErrorState
           }}
           </div>
