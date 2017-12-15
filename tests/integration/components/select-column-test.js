@@ -12,6 +12,6 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{select-column}}`);
 
-  assert.equal(this.$().text().trim(), 'Source column headings');
+  assert.equal(this.$().text().trim(), 'Choose column');
 
 });
