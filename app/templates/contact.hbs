@@ -1,5 +1,5 @@
 <div class="ui text container">
-	<h3 class="first headroom">Contact information</h3>
+  <h3 class="first headroom">Contact information</h3>
   <p>
     Enter the email address for the person or group that would like to receive updates on the status of this dataset.
   </p>
@@ -8,27 +8,43 @@
       <p> <span class="required"> * </span>
         indicates field is <b> required </b> to proceed </p>
     </div>
-  	{{#with (changeset model MaintainerValidator) as |changeset|}}
-  		<div class="ui grid">
-  			<div class="eight wide column ui form">
-  				{{validated-input
-  					label="Name"
-  					propertyName="maintainer_name"
-  					placeholder="What should we call you?"
-  					changeset=changeset
-  					showErrorState=showErrorState}}
-  			</div>
-  			<div class="eight wide column ui form">
-  				{{validated-input
-  					label="Email address"
-  					propertyName="maintainer_email"
-  					placeholder="you@example.com"
-  					required=true
-  					changeset=changeset
-  					showErrorState=showErrorState}}
-  			</div>
-  		</div>
-  		{{nav-buttons showError="showError" sendChangeRoute="changeRoute" back="mapping" next="review" forwardButtonText="Review" changeset=changeset}}
-  	{{/with}}
+    {{#with (changeset model MaintainerValidator) as |changeset|}}
+      <div class="ui grid">
+        <div class="eight wide column ui form">
+          <div class="field ">
+            <label>Name</label>
+            {{input
+              type="text"
+              value=(get changeset "maintainer_name")
+              changeset=changeset
+              placeholder="What should we call you?"
+              showErrorState=showFormErrorState
+            }}
+          </div>
+        </div>
+        <div class="eight wide column ui form">
+        <div class="required field ">
+          <label>Email address</label>
+          {{input
+            type="text"
+            value=(get changeset "maintainer_email")
+            changeset=changeset
+            placeholder="you@example.com"
+            showErrorState=showFormErrorState
+          }}
+          </div>
+        </div>
+      </div>
+      {{#if showErrorState}}
+        <div>
+          <ul class="list">
+            {{#each errorMessages as |errorMessage|}}
+              <li>{{errorMessage}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/if}}
+      {{nav-buttons showError="showError" sendChangeRoute="changeRoute" back="mapping" next="review" forwardButtonText="Review" changeset=changeset}}
+    {{/with}}
   </div>
 </div>

@@ -24,21 +24,21 @@ export default Ember.Component.extend({
     editField: function(heading, index, column){
       this.model.submission.get('oaFields')[heading].fields.replace(index, 1, column);
       for (var i = 0; i < 2; i++){
-        this.model.submission.exampleRows[i][heading].replace(index, 1, this.model.webServiceResponse.source_data.results[i][column])
+        this.model.submission.get('exampleRows')[i][heading].replace(index, 1, this.model.webServiceResponse.source_data.results[i][column])
       }
     },
     addField: function(heading, column){
       this.set('showAdditionalJoinDropdown', false);
       this.model.submission.get('oaFields')[heading].fields.addObject(column)
       for (var i = 0; i < 2; i++){
-        this.model.submission.exampleRows[i][heading].addObject(this.model.webServiceResponse.source_data.results[i][column]);
+        this.model.submission.get('exampleRows')[i][heading].addObject(this.model.webServiceResponse.source_data.results[i][column]);
       }
       this.set('showAdditionalJoinButton', true)
     },
     removeField: function(heading, column){
       this.model.submission.get('oaFields')[heading].fields.removeObject(column);
       for (var i = 0; i < 2; i++){
-        this.model.submission.exampleRows[i][heading].removeObject(this.model.webServiceResponse.source_data.results[i][column]);
+        this.model.submission.get('exampleRows')[i][heading].removeObject(this.model.webServiceResponse.source_data.results[i][column]);
       }
     },
     addJoin: function(){

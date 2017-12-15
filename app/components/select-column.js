@@ -17,7 +17,7 @@ export default Ember.Component.extend({
       var column = this.model.submission.get('oaFields')[heading].fields[0];
       this.model.submission.get('oaFields')[heading].fields.removeObject(column);
       for (var i = 0; i < 2; i++){
-        this.model.submission.exampleRows[i][heading].removeObject(this.model.webServiceResponse.source_data.results[i][column]);
+        this.model.submission.get('exampleRows')[i][heading].removeObject(this.model.webServiceResponse.source_data.results[i][column]);
       }
     },
   }

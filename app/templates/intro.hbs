@@ -8,33 +8,47 @@
   </div>
   <div class="intro">
     <h3 class="first headroom">Welcome!</h3>
-    <p>
-      Provide link to data or upload data.<br>
-    </p>
-    <p>
-      <!-- zip file that contains shapefile, csv or geoJSON -->
-      <!-- arcGIS, csv, geoJSON are standalone -->
-      <i>Accepted formats are .csv, .geojson, ArcGIS service, and .zip (which contain .csv, .geojson, or .dbf)</i>
-      <!-- (*add question mark icon with this in popup text: For more information, visit https://github.com/openaddresses/submit-service/blob/master/README.md) -->
-    </p>
-    <div class="form-content">
-      <div class="ui url labeled input">
-        <div class="ui label">
-          URL
+    {{#with (changeset model DataURLValidator) as |changeset|}}
+      <p>
+        Provide link to data or upload data.
+      </p>
+      <p>
+        <i>Accepted formats are .csv, .geojson, ArcGIS service, and .zip (which contain .csv, .geojson, or .dbf)</i>
+      </p>
+      <div class="form-content">
+        <div class="ui url labeled input">
+          <div class="ui label">
+            URL
+          </div>
+          {{input
+            type="text"
+            value=(get changeset "data_url")
+            changeset=changeset
+            placeholder="URL for hosted data"
+            showErrorState=showFormErrorState
+          }}
         </div>
-        <input type="text" placeholder="http://..." onChange={{action "setURL"}}>
+        <div class="ui horizontal divider">
+          Or
+        </div>
+        <div>
+          <label for="uploadfile" class="ui upload icon small button">
+            <i class="file icon"></i>
+            Choose file to upload
+          </label>
+          <input type="file" id="uploadfile" style="display:none" onChange={{action "uploadFile"}}>{{fileName}}
+        </div>
       </div>
-      <div class="ui horizontal divider">
-        Or
-      </div>
-      <div>
-        <label for="uploadfile" class="ui upload icon small button">
-          <i class="file icon"></i>
-          Choose file to upload
-        </label>
-        <input type="file" id="uploadfile" style="display:none" onChange={{action "uploadFile"}}>{{fileName}}
-      </div>
-    </div>
-    {{nav-buttons sendChangeRoute="changeRoute" next="more-info"}}
+      {{#if showErrorState}}
+        <div>
+          <ul class="list">
+            {{#each errorMessages as |errorMessage|}}
+              <li>{{errorMessage}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/if}}
+      {{nav-buttons sendChangeRoute="changeRoute" next="more-info" showError="showError" changeset=changeset}}
+    {{/with}}
   </div>
 </div>

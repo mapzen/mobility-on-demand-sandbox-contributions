@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   actions: {
     extractionFunction: function(extraction_function, field){
       for (var i = 0; i < 2; i++){
-        var fieldValue =  this.model.webServiceResponse.source_data.results[i][this.model.submission.oaFields[field].fields[0]];
+        var fieldValue =  this.model.webServiceResponse.source_data.results[i][this.model.submission.get('oaFields')[field].fields[0]];
         var oa_extraction_regExp;
         if (extraction_function === "postfixed_street_pattern"){
           oa_extraction_regExp = new RegExp('^(?:\\s*(?:[0-9]+(?:[ -]/[0-9]/[0-9])?|[0-9]+-[0-9]+|[0-9]+-?[A-Z])\\s+)?(.*)', 'i');
