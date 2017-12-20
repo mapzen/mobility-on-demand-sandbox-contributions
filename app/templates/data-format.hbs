@@ -23,12 +23,10 @@
               {{#unless (eq field "lat")}}
                 <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>
                   {{#if (eq field "number")}}
-                    house number
+                    house<br/> number <span class="required"> * </span>
                   {{else}}
                     {{field}}
-                  {{/if}}
-                  {{#if (or (eq field "number") (eq field "street"))}}
-                    <span class="required"> * </span>
+                    {{#if (eq field "street")}} <span class="required"> * </span> {{/if}}
                   {{/if}}
                 </a></th>
               {{/unless}}

@@ -202,10 +202,6 @@ nav ul li.active {
 }
 
 /* styling for more-info page */
-.ui.form .inline.sharealike.field {
-  margin-top: 1em;
-}
-
 .field .ui.button.active {
   background: var(--link);
   color: white;
