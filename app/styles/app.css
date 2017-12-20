@@ -212,6 +212,14 @@ nav ul li.active {
   color: white;
 }
 
+.ui.radio.checkbox {
+  opacity: 0.5;
+}
+
+.ui.radio.checkbox.checked {
+  opacity: 1;
+}
+
 /* styling for data format page */
 .data-functions {
   cursor: pointer;
