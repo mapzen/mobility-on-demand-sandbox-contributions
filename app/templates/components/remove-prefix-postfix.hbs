@@ -1,8 +1,8 @@
 <a class="item">
-  <i class="minus icon"></i>
+  <i class="minus link-text icon"></i>
 </a>
-<div class="fifteen wide field">
-  {{#ui-dropdown class="selection fluid" selected=properties.prefix_or_postfix onChange=(action "setPrefixPostfixFieldFromDropdown" field) as |execute mapper|}}
+<div class="sixteen wide field">
+  {{#ui-dropdown class="selection fluid data-format" selected=properties.prefix_or_postfix onChange=(action "setPrefixPostfixFieldFromDropdown" field) as |execute mapper|}}
     <div class="default text">
       Source column headings
     </div>

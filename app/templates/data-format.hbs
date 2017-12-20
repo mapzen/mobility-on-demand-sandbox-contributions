@@ -1,132 +1,134 @@
-<div class="ui text container">
+<div class="ui text container flow">
   <h3 class="first headroom">Data format</h3>
-  <table class="ui celled table">
-    <thead>
-      <tr>
-        {{#each-in model.submission.oaFields as |field properties|}}
-          {{#if (eq field "lon")}}
-            {{#if (eq model.webServiceResponse.conform.type "csv")}}
-              <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>{{field}}</a></th>
-            {{/if}}
-          {{/if}}
-          {{#if (eq field "lat")}}
-            {{#if (eq model.webServiceResponse.conform.type "csv")}}
-              <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>{{field}}</a></th>
-            {{/if}}
-          {{/if}}
-          {{#unless (eq field "lon")}}
-            {{#unless (eq field "lat")}}
-              <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>
-                {{#if (eq field "number")}}
-                  house number 
-                {{else}}
-                  {{field}}
-                {{/if}}
-                {{#if (or (eq field "number") (eq field "street"))}}
-                  <span class="required"> * </span>
-                {{/if}}
-              </a></th>
-            {{/unless}}
-          {{/unless}}
-        {{/each-in}}
-      </tr>
-    </thead>
-    <tbody>
-      {{#each-in model.submission.exampleRows as |rows fields|}}
+  <p> This is a sample preview of the data </p>
+  <div class="ui tiny message">
+    <p> <span class="required"> * </span> indicates field is <b> required </b> to proceed </p>
+  </div>
+  <div class="form-content">
+    <table class="ui celled table">
+      <thead>
         <tr>
-          {{#each-in fields as |field label|}}
-            {{#unless (eq field "lon")}}
-              {{#unless (eq field "lat")}}
-                <td class={{if (eq field currentField) "active"}}>{{#each label as |value|}}{{value}} {{/each}}</td>
-              {{/unless}}
-            {{/unless}}
+          {{#each-in model.submission.oaFields as |field properties|}}
             {{#if (eq field "lon")}}
               {{#if (eq model.webServiceResponse.conform.type "csv")}}
-                <td class={{if (eq field currentField) "active"}}>{{#each label as |value|}}{{value}} {{/each}}</td>
+                <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>{{field}}</a></th>
               {{/if}}
             {{/if}}
             {{#if (eq field "lat")}}
               {{#if (eq model.webServiceResponse.conform.type "csv")}}
-                <td class={{if (eq field currentField) "active"}}>{{#each label as |value|}}{{value}} {{/each}}</td>
+                <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>{{field}}</a></th>
               {{/if}}
             {{/if}}
-          {{/each-in}}
-        </tr>
-      {{/each-in}}
-    </tbody>
-  </table>
-  {{#each-in model.submission.oaFields as |field properties|}}
-    {{#if (eq field currentField)}}
-      <form class="ui form segment">
-        {{#if (eq properties.function null)}}
-          <div class="data-functions">
             {{#unless (eq field "lon")}}
               {{#unless (eq field "lat")}}
-                <div class="function" onClick={{action "addFunction" field "join"}}>
-                  + Join columns
-                </div>
+                <th><a onClick={{action "goToField" field}} class={{if (not-eq currentField field) "inactiveField"}}>
+                  {{#if (eq field "number")}}
+                    house<br/> number <span class="required"> * </span>
+                  {{else}}
+                    {{field}}
+                    {{#if (eq field "street")}} <span class="required"> * </span> {{/if}}
+                  {{/if}}
+                </a></th>
               {{/unless}}
             {{/unless}}
-            {{#unless (eq field "city")}}
-              {{#unless (eq field "region")}}
-                {{#unless (eq field "district")}}
-                  {{#unless (eq field "postcode")}}
-                    {{#unless (eq field "lon")}}
-                      {{#unless (eq field "lat")}}
-                        <div class="function" onClick={{action "addFunction" field "split"}}>
-                          - Split column
-                        </div>
+          {{/each-in}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each-in model.submission.exampleRows as |rows fields|}}
+          <tr>
+            {{#each-in fields as |field label|}}
+              {{#unless (eq field "lon")}}
+                {{#unless (eq field "lat")}}
+                  <td class={{if (eq field currentField) "active"}}>{{#each label as |value|}}{{value}} {{/each}}</td>
+                {{/unless}}
+              {{/unless}}
+              {{#if (eq field "lon")}}
+                {{#if (eq model.webServiceResponse.conform.type "csv")}}
+                  <td class={{if (eq field currentField) "active"}}>{{#each label as |value|}}{{value}} {{/each}}</td>
+                {{/if}}
+              {{/if}}
+              {{#if (eq field "lat")}}
+                {{#if (eq model.webServiceResponse.conform.type "csv")}}
+                  <td class={{if (eq field currentField) "active"}}>{{#each label as |value|}}{{value}} {{/each}}</td>
+                {{/if}}
+              {{/if}}
+            {{/each-in}}
+          </tr>
+        {{/each-in}}
+      </tbody>
+    </table>
+    {{#each-in model.submission.oaFields as |field properties|}}
+      {{#if (eq field currentField)}}
+        <form class="ui form segment">
+          {{#if (eq properties.function null)}}
+            <div class="data-functions">
+              {{#unless (eq field "lon")}}
+                {{#unless (eq field "lat")}}
+                  <div class="function link-text" onClick={{action "addFunction" field "join"}}>
+                    + Join columns
+                  </div>
+                {{/unless}}
+              {{/unless}}
+              {{#unless (eq field "city")}}
+                {{#unless (eq field "region")}}
+                  {{#unless (eq field "district")}}
+                    {{#unless (eq field "postcode")}}
+                      {{#unless (eq field "lon")}}
+                        {{#unless (eq field "lat")}}
+                          <div class="function link-text" onClick={{action "addFunction" field "split"}}>
+                            - Split column
+                          </div>
+                        {{/unless}}
                       {{/unless}}
                     {{/unless}}
                   {{/unless}}
                 {{/unless}}
               {{/unless}}
-            {{/unless}}
-          </div>
-        {{else if (and (not-eq properties.function "join") (not-eq properties.function "split"))}}
-          <div class="data-functions remove" onClick={{action "removeFunction" field}}>
-            <i class="remove icon"></i> Remove extraction
-          </div>
-        {{/if}}
-        <div class="field">
-          <label>
-            {{#if (eq field "number")}}
-              house number 
-            {{else}}
-              {{field}}
-            {{/if}}
-            {{#if (or (eq field "number") (eq field "street"))}}
-              <span class="required"> * </span>
-            {{/if}}
-          </label>
-          {{#unless (eq properties.function "join")}}
-            {{select-column field=field properties=properties columnHeadings=columnHeadings model=model}}
-          {{/unless}}
-          {{#if (eq properties.function "join")}}
-            {{join-column field=field properties=properties showAdditionalJoinDropdown=showAdditionalJoinDropdown model=model}}
-          {{else if (eq properties.function "split")}}
-            {{split-column field=field properties=properties columnHeadings=columnHeadings model=model}}
-          {{else if (eq properties.function "removePrefixOrPostfix")}}
-            {{remove-prefix-postfix field=field properties=properties model=model}}
-          {{else if (eq properties.function "row_fxn_remove_prefix")}}
-            {{remove-prefix-postfix field=field properties=properties model=model}}
-          {{else if (eq properties.function "row_fxn_remove_postfix")}}
-            {{remove-prefix-postfix field=field properties=properties model=model}}
-          {{else if properties.function}}
-            <button class="ui button basic green" onClick={{action "removeFunction" field}}>Remove extraction <i class="remove icon"></i></button>
+            </div>
+          {{else if (and (not-eq properties.function "join") (not-eq properties.function "split"))}}
+            <div class="data-functions remove" onClick={{action "removeFunction" field}}>
+              <i class="remove icon"></i> Remove extraction
+            </div>
           {{/if}}
-          <div class="field nav-buttons">
-            {{#unless (or (eq currentField "lat") (eq currentField "number"))}}
-              <button class="ui blue compact left floated button link" onClick={{action "prevField" field}}><i class="left arrow icon"></i>{{prevField}}</button>
+          <div class="field">
+            <label>
+              {{#if (eq field "number")}}
+                house number
+              {{else}}
+                {{field}}
+              {{/if}}
+              {{#if (or (eq field "number") (eq field "street"))}}
+                <span class="required"> * </span>
+              {{/if}}
+            </label>
+            {{#unless (eq properties.function "join")}}
+              {{select-column field=field properties=properties columnHeadings=columnHeadings model=model}}
             {{/unless}}
-            {{#unless (eq currentField "postcode")}}
-              <button class="ui blue compact right floated button link"  onClick={{action "nextField" field}}>{{nextField}} <i class="right arrow icon"></i></button>
-            {{/unless}}
-            <div class="ui hidden clearing divider"></div>
+            {{#if (eq properties.function "join")}}
+              {{join-column field=field properties=properties showAdditionalJoinDropdown=showAdditionalJoinDropdown model=model}}
+            {{else if (eq properties.function "split")}}
+              {{split-column field=field properties=properties columnHeadings=columnHeadings model=model}}
+            {{else if (eq properties.function "removePrefixOrPostfix")}}
+              {{remove-prefix-postfix field=field properties=properties model=model}}
+            {{else if (eq properties.function "row_fxn_remove_prefix")}}
+              {{remove-prefix-postfix field=field properties=properties model=model}}
+            {{else if (eq properties.function "row_fxn_remove_postfix")}}
+              {{remove-prefix-postfix field=field properties=properties model=model}}
+            {{/if}}
+            <div class="field nav-buttons">
+              {{#unless (or (eq currentField "lat") (eq currentField "number"))}}
+                <button class="ui blue compact left floated button link" onClick={{action "prevField" field}}><i class="left arrow icon"></i>{{prevField}}</button>
+              {{/unless}}
+              {{#unless (eq currentField "postcode")}}
+                <button class="ui blue compact right floated button link"  onClick={{action "nextField" field}}>{{nextField}} <i class="right arrow icon"></i></button>
+              {{/unless}}
+              <div class="ui hidden clearing divider"></div>
+            </div>
           </div>
-        </div>
-      </form>
-    {{/if}}
-  {{/each-in}}
-  {{nav-buttons sendChangeRoute="changeRoute" back="license" next="contact"}}
+        </form>
+      {{/if}}
+    {{/each-in}}
+    {{nav-buttons sendChangeRoute="changeRoute" back="license" next="contact"}}
+  </div>
 </div>

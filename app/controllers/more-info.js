@@ -41,6 +41,17 @@ export default Ember.Controller.extend({
       this.model.set('license_url', null)
       this.model.set('user_submitted_url', input.target.value)
     },
+    setRadioButton: function(checkbox) {
+      /*eslint-disable */
+      if (checkbox === 'provide') {
+        $('.provide.checkbox').checkbox('check');
+        $('.choose.checkbox').checkbox('uncheck');
+      } else {
+        $('.choose.checkbox').checkbox('check');
+        $('.provide.checkbox').checkbox('uncheck');
+      }
+      /*eslint-enable */
+    },
     setShareAlike: function(input){
       if (input === true){
         this.model.set('share_alike', true);

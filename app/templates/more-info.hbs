@@ -1,4 +1,4 @@
-<div class="ui text container">
+<div class="ui text container flow">
   <h3 class="first headroom">More information</h3>
   <p>
     We'll gather more info from the user about license/attribution/update frequency here.
@@ -10,7 +10,20 @@
     </div>
     <div class="ui form segment">
       <div class="required field">
-        <h4 class="ui dividing header">License information</h4>
+        <label>Frequency of update</label>
+        {{#ui-dropdown class="selection" selected=model.update_frequency onChange=(action "setFrequency") as | execute mapper|}}
+          <div class="default text">Frequency</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {{#each frequencies as | frequency |}}
+              <div class="item" data-value={{map-value mapper frequency}}>
+                {{frequency}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}}
+      </div>
+      <div class="required field">
         <label>Does the data have a license?</label>
         <button class="ui compact button {{if (eq model.license_exists true) "active"}}" {{action "licenseExists" true}}>Yes</button>
         <button class="ui compact button none {{if (eq model.license_exists false) "active"}}" {{action "licenseExists" false}}>No</button>
@@ -18,39 +31,33 @@
       </div>
       {{#if (eq model.license_exists true)}}
         <form class="ui form">
-          <div class="inline required fields">
-            <label> Add a license <span class="required"> * </span> </label>
-            <div class="grouped fields">
-              <div class="field">
-                {{ui-radio name="license" label="Choose from license" value="choose" current=license onChange=(action (mut license))}}
+          <div class="required grouped fields">
+            <label> Add a license </label>
+            <div class="fields">
+              <div class="eight wide field">
+                {{ui-radio class="choose" label="Choose from license" value="choose" name="license" current=(if (eq model.user_submitted_url null) "choose")}}
+                <div class="field">
+                  {{#ui-dropdown class="license selection" selected=model.license click=(action "setRadioButton" "choose") onChange=(action "selectLicense") as | execute mapper|}}
+                    <div class="default text">Licenses</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                      {{#each licenses as | license |}}
+                        <div class="item" data-value={{map-value mapper license}}>
+                          {{license.name}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  {{/ui-dropdown}}
+                </div>
               </div>
-              <div class="field">
-                {{ui-radio name="license" label="Provide link to license" value="provide" current=license onChange=(action (mut license))}}
+              <div class="eight wide field">
+                {{ui-radio class="provide" label="Provide link to license" value="provide" name="license" current=(if (not-eq model.user_submitted_url null) "provide")}}
+                <div class="field">
+                  <input type="text" class="user-submitted" placeholder="www.sample.com..." value={{model.user_submitted_url}} onclick={{action "setRadioButton" "provide"}} onInput={{action "userSubmittedLicense"}}>
+                </div>
               </div>
             </div>
           </div>
-          {{#if (eq license "choose")}}
-          <div class="required twelve wide field">
-            <label> Choose a license </label>
-            {{#ui-dropdown class="license selection" selected=model.license onChange=(action "selectLicense") as | execute mapper|}}
-              <div class="default text">Licenses</div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                {{#each licenses as | license |}}
-                  <div class="item" data-value={{map-value mapper license}}>
-                    {{license.name}}
-                  </div>
-                {{/each}}
-              </div>
-            {{/ui-dropdown}}
-          </div>
-          {{/if}}
-          {{#if (eq license "provide")}}
-            <div class="required twelve wide field">
-              <label> Provide a link to license </label>
-              <input type="text" class="license" placeholder="www.sample.com..." value={{model.user_submitted_url}} onInput={{action "userSubmittedLicense"}}>
-            </div>
-          {{/if}}
         </form>
         <div class="field">
           <div class="inline sharealike field">
@@ -70,24 +77,6 @@
           <input type="text" value="{{model.attribution_text}}" onInput={{action "setAttributionText"}}>
         </div>
       {{/if}}
-      <div class="ui hidden divider"></div>
-      <div class="field">
-        <h4 class="ui dividing header">Data information</h4>
-        <div class="required field">
-          <label>Frequency of update</label>
-          {{#ui-dropdown class="selection" selected=model.update_frequency onChange=(action "setFrequency") as | execute mapper|}}
-            <div class="default text">Frequency</div>
-            <i class="dropdown icon"></i>
-            <div class="menu">
-              {{#each frequencies as | frequency |}}
-                <div class="item" data-value={{map-value mapper frequency}}>
-                  {{frequency}}
-                </div>
-              {{/each}}
-            </div>
-          {{/ui-dropdown}}
-        </div>
-      </div>
     </div>
   </div>
   {{nav-buttons back="intro" sendChangeRoute="changeRoute" next="data-format"}}
