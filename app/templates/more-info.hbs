@@ -10,7 +10,20 @@
     </div>
     <div class="ui form segment">
       <div class="required field">
-        <h4 class="ui dividing header">License information</h4>
+        <label>Frequency of update</label>
+        {{#ui-dropdown class="selection" selected=model.update_frequency onChange=(action "setFrequency") as | execute mapper|}}
+          <div class="default text">Frequency</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {{#each frequencies as | frequency |}}
+              <div class="item" data-value={{map-value mapper frequency}}>
+                {{frequency}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}}
+      </div>
+      <div class="required field">
         <label>Does the data have a license?</label>
         <button class="ui compact button {{if (eq model.license_exists true) "active"}}" {{action "licenseExists" true}}>Yes</button>
         <button class="ui compact button none {{if (eq model.license_exists false) "active"}}" {{action "licenseExists" false}}>No</button>
@@ -64,24 +77,6 @@
           <input type="text" value="{{model.attribution_text}}" onInput={{action "setAttributionText"}}>
         </div>
       {{/if}}
-      <div class="ui hidden divider"></div>
-      <div class="field">
-        <h4 class="ui dividing header">Data information</h4>
-        <div class="required field">
-          <label>Frequency of update</label>
-          {{#ui-dropdown class="selection" selected=model.update_frequency onChange=(action "setFrequency") as | execute mapper|}}
-            <div class="default text">Frequency</div>
-            <i class="dropdown icon"></i>
-            <div class="menu">
-              {{#each frequencies as | frequency |}}
-                <div class="item" data-value={{map-value mapper frequency}}>
-                  {{frequency}}
-                </div>
-              {{/each}}
-            </div>
-          {{/ui-dropdown}}
-        </div>
-      </div>
     </div>
   </div>
   {{nav-buttons back="intro" sendChangeRoute="changeRoute" next="data-format"}}
