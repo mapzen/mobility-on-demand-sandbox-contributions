@@ -18,14 +18,30 @@
       </div>
       {{#if (eq model.license_exists true)}}
         <form class="ui form">
-          <div class="inline required fields">
-            <label> Add a license <span class="required"> * </span> </label>
-            <div class="grouped fields">
-              <div class="field">
-                {{ui-radio name="license" label="Choose from license" value="choose" current=license onChange=(action (mut license))}}
+          <div class="required grouped fields">
+            <label> Add a license </label>
+            <div class="fields">
+              <div class="eight wide field">
+                {{ui-radio class="choose" label="Choose from license" value="choose" name="license"}}
+                <div class="field">
+                  {{#ui-dropdown class="license selection" selected=model.license onChange=(action "selectLicense") as | execute mapper|}}
+                    <div class="default text">Licenses</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                      {{#each licenses as | license |}}
+                        <div class="item" data-value={{map-value mapper license}}>
+                          {{license.name}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  {{/ui-dropdown}}
+                </div>
               </div>
-              <div class="field">
-                {{ui-radio name="license" label="Provide link to license" value="provide" current=license onChange=(action (mut license))}}
+              <div class="eight wide field">
+                {{ui-radio class="provide" label="Provide link to license" value="provide" name="license"}}
+                <div class="field">
+                  <input type="text" class="user-submitted" placeholder="www.sample.com..." value={{model.user_submitted_url}} onInput={{action "userSubmittedLicense"}}>
+                </div>
               </div>
             </div>
           </div>

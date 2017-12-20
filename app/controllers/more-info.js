@@ -32,6 +32,8 @@ export default Ember.Controller.extend({
       this.model.set('user_submitted_url', null)
       this.model.set('license', license.name)
       this.model.set('license_url', license.url)
+      $('.choose.checkbox').checkbox('attach events', '.license.selection', 'check');
+      $('.provide.checkbox').checkbox('attach events', '.license.selection', 'uncheck');
     },
     changeRoute: function(route){
       this.transitionToRoute(route);
@@ -40,6 +42,9 @@ export default Ember.Controller.extend({
       this.model.set('license', null)
       this.model.set('license_url', null)
       this.model.set('user_submitted_url', input.target.value)
+      console.log(input)
+      $('.provide.checkbox').checkbox('attach events', 'input.user-submitted', 'check');
+      $('.choose.checkbox').checkbox('attach events', 'input.user-submitted', 'uncheck');
     },
     setShareAlike: function(input){
       if (input === true){
