@@ -115,8 +115,6 @@
               {{remove-prefix-postfix field=field properties=properties model=model}}
             {{else if (eq properties.function "row_fxn_remove_postfix")}}
               {{remove-prefix-postfix field=field properties=properties model=model}}
-            {{else if properties.function}}
-              <button class="ui button basic green" onClick={{action "removeFunction" field}}>Remove extraction <i class="remove icon"></i></button>
             {{/if}}
             <div class="field nav-buttons">
               {{#unless (or (eq currentField "lat") (eq currentField "number"))}}
