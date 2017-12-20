@@ -42,6 +42,7 @@ export default Ember.Controller.extend({
       this.model.set('user_submitted_url', input.target.value)
     },
     setRadioButton: function(checkbox) {
+      /*eslint-disable */
       if (checkbox === 'provide') {
         $('.provide.checkbox').checkbox('check');
         $('.choose.checkbox').checkbox('uncheck');
@@ -49,6 +50,7 @@ export default Ember.Controller.extend({
         $('.choose.checkbox').checkbox('check');
         $('.provide.checkbox').checkbox('uncheck');
       }
+      /*eslint-enable */
     },
     setShareAlike: function(input){
       if (input === true){
