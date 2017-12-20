@@ -67,6 +67,9 @@ export default Ember.Controller.extend(sharedActions, {
         this.set('showAdditionalJoinDropdown', false);
       } else if (this.model.submission.get('oaFields')[field].function !== "join" && this.model.submission.get('oaFields')[field].function !== "split"){
         Ember.set(this.model.submission.get('oaFields')[field], "function", "split");
+        if (this.model.submission.get('oaFields')[field].prefix_or_postfix){
+          Ember.set(this.model.submission.get('oaFields')[field], "prefix_or_postfix", null);
+        }
       } else {
         Ember.set(this.model.submission.get('oaFields')[field], "function", null);
       }

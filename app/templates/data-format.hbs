@@ -1,10 +1,10 @@
 <div class="ui text container flow">
   <h3 class="first headroom">Data format</h3>
+  <p> This is a sample preview of the data </p>
   <div class="ui tiny message">
     <p> <span class="required"> * </span> indicates field is <b> required </b> to proceed </p>
   </div>
   <div class="form-content">
-    <p> <i> This is a sample preview of the data </i> </p>
     <table class="ui celled table">
       <thead>
         <tr>
@@ -111,16 +111,18 @@
               {{join-column field=field properties=properties showAdditionalJoinDropdown=showAdditionalJoinDropdown model=model}}
             {{else if (eq properties.function "split")}}
               {{split-column field=field properties=properties columnHeadings=columnHeadings model=model}}
+            {{else if (eq properties.function "removePrefixOrPostfix")}}
+              {{remove-prefix-postfix field=field properties=properties model=model}}
+            {{else if (eq properties.function "row_fxn_remove_prefix")}}
+              {{remove-prefix-postfix field=field properties=properties model=model}}
+            {{else if (eq properties.function "row_fxn_remove_postfix")}}
+              {{remove-prefix-postfix field=field properties=properties model=model}}
+            {{else if properties.function}}
+              <button class="ui button basic green" onClick={{action "removeFunction" field}}>Remove extraction <i class="remove icon"></i></button>
             {{/if}}
             <div class="field nav-buttons">
               {{#unless (or (eq currentField "lat") (eq currentField "number"))}}
-                <button class="ui blue compact left floated button link" onClick={{action "prevField" field}}><i class="left arrow icon"></i>
-                  {{#if (eq prevField "number")}}
-                    house number
-                  {{else}}
-                    {{prevField}}
-                  {{/if}}
-                </button>
+                <button class="ui blue compact left floated button link" onClick={{action "prevField" field}}><i class="left arrow icon"></i>{{prevField}}</button>
               {{/unless}}
               {{#unless (eq currentField "postcode")}}
                 <button class="ui blue compact right floated button link"  onClick={{action "nextField" field}}>{{nextField}} <i class="right arrow icon"></i></button>
@@ -131,6 +133,6 @@
         </form>
       {{/if}}
     {{/each-in}}
+    {{nav-buttons sendChangeRoute="changeRoute" back="license" next="contact"}}
   </div>
-  {{nav-buttons sendChangeRoute="changeRoute" back="license" next="contact"}}
 </div>

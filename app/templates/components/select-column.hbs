@@ -16,11 +16,13 @@
       {{/ui-dropdown}}
     </div>
     {{#if properties.fields.firstObject}}
-      <div class="one wide field">
-        <button class="ui icon tiny compact button basic red clear-field" style="margin-top: 15px" onClick={{action "removeField" field}}>
-          <i class="minus icon"></i>
-        </button>
-      </div>
+      {{#unless (eq properties.function "removePrefixOrPostfix")}}
+        <div class="one wide field">
+          <button class="ui icon tiny compact button basic red clear-field" style="margin-top: 15px" onClick={{action "removeField" field}}>
+            <i class="minus icon"></i>
+          </button>
+        </div>
+      {{/unless}}
     {{/if}}
   </div>
 </div>

@@ -141,6 +141,14 @@
                   </td>
                 </tr>
               {{/if}}
+              {{#if properties.prefix_or_postfix}}
+                <tr>
+                  <td>Field to remove</td>
+                  <td>
+                    {{properties.prefix_or_postfix}}
+                  </td>
+                </tr>
+              {{/if}}
               {{#if (eq field "street")}}
                 <tr>
                   <td>May contain unit number</td>
