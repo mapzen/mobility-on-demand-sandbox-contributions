@@ -301,7 +301,8 @@ nav ul li.active {
   position: absolute;
   right: 20px;
   cursor: pointer;
-  font-size: small;
+  font-weight: bold;
+  font-size: 1em;
 }
 
 .review.edit:hover {
