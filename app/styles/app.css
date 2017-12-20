@@ -284,6 +284,10 @@ nav ul li.active {
   padding: 10px 0px;
 }
 
+.info.attribution.value {
+  text-transform: capitalize;
+}
+
 .ui.fitted.divider {
   margin: 0px !important;
 }
