@@ -4,7 +4,7 @@
   <div class="ui tiny message">
     <p> <span class="required"> * </span> indicates field is <b> required </b> to proceed </p>
   </div>
-  <table class="ui celled table">
+  <table class="ui celled table data-format">
     <thead>
       <tr>
         {{#each-in model.submission.oaFields as |field properties|}}
@@ -37,6 +37,7 @@
     </thead>
     <tbody>
       {{#each-in model.submission.exampleRows as |rows fields|}}
+        {{#unless (and (eq showMore false) (gt rows 1))}}
         <tr>
           {{#each-in fields as |field label|}}
             {{#unless (eq field "lon")}}
@@ -56,9 +57,19 @@
             {{/if}}
           {{/each-in}}
         </tr>
+        {{/unless}}
       {{/each-in}}
     </tbody>
   </table>
+  <span class="see-more link-text" onclick={{action "toggleShowMore"}}>
+    <i class="ellipsis horizontal icon"></i>
+    {{#if (eq showMore false)}}
+      See More
+    {{else}}
+      See Less
+    {{/if}}
+  </span>
+  <div class="ui hidden clearing divider"></div>
   {{#each-in model.submission.oaFields as |field properties|}}
     {{#if (eq field currentField)}}
       <form class="ui form segment">

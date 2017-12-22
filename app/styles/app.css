@@ -228,6 +228,17 @@ nav ul li.active {
 }
 
 /* styling for data format page */
+span.see-more {
+  float: right;
+  padding: 0px 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ui.table.data-format {
+  margin-bottom: 5px;
+}
+
 .data-functions {
   cursor: pointer;
   position: absolute;
