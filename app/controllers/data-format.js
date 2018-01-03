@@ -44,12 +44,16 @@ export default Ember.Controller.extend(sharedActions, {
     return nextFields[this.get('currentField')];
   }),
   showErrorState: false,
+  showMore: false,
   errorMessages: [],
   resetErrorState: function () {
     Ember.set(this, 'showErrorState', false);
     Ember.set(this, 'errorMessages', []);
   },
   actions: {
+    toggleShowMore: function() {
+      this.set('showMore', !this.showMore);
+    },
     goToField: function(field){
       this.set('currentField', field);
     },
